@@ -1,5 +1,5 @@
 {
-  "name": "rescript-project-template",
+  "name": "functional-data-structure",
   "sources": {
     "dir": "src",
     "subdirs": true
