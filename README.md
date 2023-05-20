@@ -1,9 +1,12 @@
 # Function Data Structure 
 
+[npm package](https://www.npmjs.com/package/functional-data-structure)
+
+
 ## Installation
 
 ```sh
-npm install
+npm install functional-data-structure
 ```
 
 ## Build
