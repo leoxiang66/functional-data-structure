@@ -5,3 +5,6 @@
 .merlin
 **.js
 **.tgz**
+.psc-ide-port
+.spago/
+output/
