@@ -1,6 +1,4 @@
-# ReScript Project Template
-
-The only official ReScript starter template.
+# Function Data Structure 
 
 ## Installation
 
@@ -17,12 +15,5 @@ npm install
 ## Run
 
 ```sh
-node src/Demo.bs.js
-```
-
-## Example Setup
-```
-npm install
-npm run res:build
-node src/Demo.bs.js
+node src/main.js
 ```
