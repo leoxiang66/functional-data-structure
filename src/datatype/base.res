@@ -1,5 +1,9 @@
 module Base = {
 
+  type number = 
+  | Int(int)
+  | Float(float)
+
   type option<'a> = 
   | None 
   | Some('a)
