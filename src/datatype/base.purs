@@ -1,9 +1,5 @@
 module Base where
 
-data Number 
-  = Int Int 
-  | Float Float 
-
 data Option a 
   = None 
   | Some a
