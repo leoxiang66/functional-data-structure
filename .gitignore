@@ -3,4 +3,5 @@
 /lib/
 .bsb.lock
 .merlin
-src/**js**
+**.js
+**.tgz**

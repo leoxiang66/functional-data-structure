@@ -1,6 +1,6 @@
 {
   "name": "functional-data-structure",
-  "version": "0.1.5",
+  "version": "0.1.8",
   "description": "A Rescript package for functional data structure.",
   "author": "Tao Xiang",
   "scripts": {
