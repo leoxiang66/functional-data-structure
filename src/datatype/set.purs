@@ -1,10 +1,8 @@
 module Set where
 
 import Prelude
-
-import Data.Array
-
-
+import Data.Array as Array
+import Data.Foldable (foldl)
 
 
 type Set a = Array a
@@ -12,14 +10,15 @@ type Set a = Array a
 empty :: forall a. Set a
 empty = []
 
-insert :: forall a. Eq a => a -> Set a -> Set a
-insert item set = 
+insert :: forall a. Eq a =>  Set a -> a  -> Set a
+insert set item = 
   if item `Array.elem` set 
     then set 
     else Array.snoc set item
 
 make :: forall a. Eq a => Array a -> Set a
-make arr = foldl insert empty arr
+make arr = foldl insert arr empty
+
 
 contains :: forall a. Eq a => a -> Set a -> Boolean
 contains item set = item `Array.elem` set
