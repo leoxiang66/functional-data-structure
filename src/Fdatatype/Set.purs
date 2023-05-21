@@ -1,6 +1,7 @@
 module Fdatatype.Set
   ( Set
   , all
+  , belongsto
   , contains
   , empty
   , insert
@@ -11,6 +12,7 @@ module Fdatatype.Set
   where
 
 import Prelude
+
 import Data.Array as Array
 import Data.Foldable (foldl)
 
@@ -41,3 +43,6 @@ union set1 set2 = foldl insert set1 set2
 
 all :: forall a. Eq a => (a -> Boolean) -> Set a -> Boolean
 all pred set = foldl (\acc x -> acc && (pred x)) true set 
+
+belongsto :: forall a. Eq a => a -> Set a -> Boolean
+belongsto x arr = x `Array.elem` arr
