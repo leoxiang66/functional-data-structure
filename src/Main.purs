@@ -3,8 +3,8 @@ module Main where
 import Prelude
 import Effect (Effect)
 import Effect.Console (logShow)
-import Set (Set, empty)
-import Tree(Tree(..),bst)
+import Fdatatype.Set (Set, empty)
+import Fdatatype.Tree(Tree(..),bst)
 
 main :: Effect Unit
 main = do

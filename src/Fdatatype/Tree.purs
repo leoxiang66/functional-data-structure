@@ -1,4 +1,4 @@
-module Tree
+module Fdatatype.Tree
   ( Tree(..)
   , bst
   , setTree
@@ -6,7 +6,7 @@ module Tree
   where
 
 import Prelude
-import Set (Set, empty, insert, union,all)
+import Fdatatype.Set (Set, empty, insert, union,all)
 
 data Tree a
   = Leaf 

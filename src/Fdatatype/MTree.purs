@@ -1,11 +1,11 @@
-module MTree
+module Fdatatype.MTree
   ( MTree(..)
   , setMTree
   )
   where
 
 import Prelude
-import Set(empty,insert,union,Set)
+import Fdatatype.Set(empty,insert,union,Set)
 
 data MTree a
   = Leaf 

@@ -1,4 +1,4 @@
-module Base
+module Fdatatype.Base
   ( Option(..)
   , Result(..)
   )

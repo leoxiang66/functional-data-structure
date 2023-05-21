@@ -1,4 +1,4 @@
-module Set
+module Fdatatype.Set
   ( Set
   , all
   , contains
