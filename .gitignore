@@ -8,3 +8,5 @@
 **output**
 **.spago**
 **.psc-ide-port**
+go.mod
+purescript-native/ffi_loader.go
