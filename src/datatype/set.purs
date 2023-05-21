@@ -1,4 +1,14 @@
-module Set where
+module Set
+  ( Set
+  , all
+  , contains
+  , empty
+  , insert
+  , make
+  , remove
+  , union
+  )
+  where
 
 import Prelude
 import Data.Array as Array
@@ -28,3 +38,6 @@ remove item set = Array.filter (notEq item) set
 
 union :: forall a. Eq a => Set a -> Set a -> Set a
 union set1 set2 = foldl insert set1 set2
+
+all :: forall a. Eq a => (a -> Boolean) -> Set a -> Boolean
+all pred set = foldl (\acc x -> acc && (pred x)) true set 

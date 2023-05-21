@@ -1,4 +1,8 @@
-module Base where
+module Base
+  ( Option(..)
+  , Result(..)
+  )
+  where
 
 data Option a 
   = None 
