@@ -1,4 +1,8 @@
-module Fdatatype.LTree where
+module Fdatatype.LTree
+  ( LTree(..)
+  , inorder
+  )
+  where
 
 import Prelude
 
