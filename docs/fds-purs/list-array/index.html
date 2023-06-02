@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- Global Metadata --><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta name="generator" content="Astro v2.5.6">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+<!-- Canonical URL -->
+<link rel="canonical" href="https://example.com/fds-purs/list-array/">
+
+<!-- Primary Meta Tags -->
+<title>Functional Data Structure</title>
+<meta name="title" content="Functional Data Structure">
+<meta name="description" content="Welcome to my website!">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://example.com/fds-purs/list-array/">
+<meta property="og:title" content="Functional Data Structure">
+<meta property="og:description" content="Welcome to my website!">
+<meta property="og:image" content="https://example.com/placeholder-social.jpg">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://example.com/fds-purs/list-array/">
+<meta property="twitter:title" content="Functional Data Structure">
+<meta property="twitter:description" content="Welcome to my website!">
+<meta property="twitter:image" content="https://example.com/placeholder-social.jpg">
+	<link rel="stylesheet" href="/_astro/index.dbe3beaf.css" /></head>
+	<body>
+		<div class="navbar">
+<a class="navbar-brand" href="/" aria-current="page">
+	<h1>Functional Data Structure</h1>
+</a>
+</div>
+		<br>
+		<br>
+        <main>
+            <div class="lesson-container">
+				<div class="lesson">
+					<h1 id="list-vs-array-a-comparative-guide">List vs Array: A Comparative Guide</h1>
+<p>When it comes to data structures, there are several options to choose from depending on the requirements of the task at hand. Among the most fundamental and commonly used are arrays and lists. In this article, we will explore the key differences, advantages, and disadvantages of lists and arrays, so you can make an informed decision about which one to use.</p>
+<h2 id="definition">Definition</h2>
+<p><strong>Array:</strong> An array is a data structure that contains a fixed number of elements of the same data type. These elements are stored in contiguous memory locations, and each element can be directly accessed through its index.</p>
+<p><strong>List:</strong> A list, or a linked list to be precise, is a linear data structure where each element is a separate object known as a node. Each node contains a pointer or a reference to the next node in the sequence.</p>
+<h2 id="key-differences">Key Differences</h2>
+<h3 id="memory-allocation">Memory Allocation</h3>
+<p>Arrays are static and need a predetermined, fixed amount of memory allocated at the time of creation. The size of an array cannot be changed once it’s been created. Lists, on the other hand, are dynamic and grow or shrink as required, adding or removing nodes on the fly.</p>
+<h3 id="performance">Performance</h3>
+<p>When it comes to accessing elements, arrays provide fast direct access via indices. The access time for an array is O(1), which means it takes the same amount of time to fetch an element regardless of its position in the array.</p>
+<p>For lists, access time is O(n), where n is the position of the element in the list. This is because to access a particular element, you need to traverse the list from the head node until you reach the desired node.</p>
+<h3 id="insertions-and-deletions">Insertions and Deletions</h3>
+<p>In the case of insertion or deletion of an element, lists are more efficient. In an array, inserting or deleting an element requires shifting of all the subsequent elements which leads to a time complexity of O(n). For lists, insertions and deletions can be performed in O(1) time if we have a reference to the node to be deleted or after which the new node is to be inserted.</p>
+<h3 id="memory-usage">Memory Usage</h3>
+<p>Due to the dynamic nature of lists, they usually consume more memory than arrays. This is because, in addition to storing the actual data, they also have to store references or pointers to the next (and possibly previous in case of a doubly linked list) nodes.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Arrays and lists each have their strengths and weaknesses. Arrays are best used when the number of elements is known in advance, and there is a need for frequent access to elements. Lists are ideal for situations where the amount of data is not known beforehand and needs to change over time, and where insertions and deletions are frequent operations.</p>
+<p>Remember, the choice between a list and an array will depend on the specific requirements of your program or application. Understanding the properties and trade-offs of each data structure will help you make the right decision.</p>
+				</div>
+				
+			</div>
+        </main>
+        <footer class="astro-SZ7XMLTE">
+	&copy; 2022 - 2023 Tao Xiang. All rights reserved.
+</footer>
+	</body></html>
