@@ -3,6 +3,7 @@ module Main where
 import Data.List
 import Prelude
 
+import Algos.Search (linearSearch)
 import Data.Array (toUnfoldable)
 import Effect (Effect)
 import Effect.Console (logShow)
@@ -26,9 +27,14 @@ main = do
   -- let tr = (Node (Leaf 3) (Leaf 5)) :: LTree Int
   -- logShow(inorder tr)
 
-  let niubi = buildBST myList
-  logShow(myList)
-  logShow(bst niubi)
-  logShow(preorder niubi)
-  logShow(inorder niubi)
+  -- let niubi = buildBST myList
+  -- logShow(myList)
+  -- logShow(bst niubi)
+  -- logShow(preorder niubi)
+  -- logShow(inorder niubi)
+
+  let arr = fromFoldable [12, 25, 8, 10, 32]
+  let x = 8
+  let result = linearSearch arr x
+  logShow(result)
   
