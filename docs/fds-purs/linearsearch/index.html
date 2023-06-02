@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- Global Metadata --><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta name="generator" content="Astro v2.5.6">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+<!-- Canonical URL -->
+<link rel="canonical" href="https://example.com/fds-purs/linearsearch/">
+
+<!-- Primary Meta Tags -->
+<title>Functional Data Structure</title>
+<meta name="title" content="Functional Data Structure">
+<meta name="description" content="Welcome to my website!">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://example.com/fds-purs/linearsearch/">
+<meta property="og:title" content="Functional Data Structure">
+<meta property="og:description" content="Welcome to my website!">
+<meta property="og:image" content="https://example.com/placeholder-social.jpg">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://example.com/fds-purs/linearsearch/">
+<meta property="twitter:title" content="Functional Data Structure">
+<meta property="twitter:description" content="Welcome to my website!">
+<meta property="twitter:image" content="https://example.com/placeholder-social.jpg">
+	<link rel="stylesheet" href="/_astro/index.dbe3beaf.css" /></head>
+	<body>
+		<div class="navbar">
+<a class="navbar-brand" href="/" aria-current="page">
+	<h1>Functional Data Structure</h1>
+</a>
+</div>
+		<br>
+		<br>
+        <main>
+            <div class="lesson-container">
+				<div class="lesson">
+					<h2 id="what-is-searching"><strong>What is Searching ?</strong></h2>
+<p>Searching is the process of finding some particular element in the list. If the element is present in the list, then the process is called successful and the process returns the location of that element, otherwise the search is called unsuccessful.</p>
+<h2 id="what-is-linear-search"><strong>What is Linear Search ?</strong></h2>
+<p>Linear search is the simplest search algorithm and often called sequential search. In this type of searching, we simply traverse the list completely and match each element of the list with the item whose location is to be found. If the match found then location of the item is returned otherwise the algorithm return NULL.</p>
+<h2 id="linear-search-algorithm"><strong>Linear Search Algorithm :</strong></h2>
+<p><em><strong>LINEAR_SEARCH(ARR, N, VAL)</strong></em></p>
+<ul>
+<li><strong>Step 1:</strong> [INITIALIZE] SET POS = -1</li>
+<li><strong>Step 2:</strong> [INITIALIZE] SET I = 1</li>
+<li><strong>Step 3:</strong> Repeat Step 4 while I&#x3C;=N</li>
+<li><strong>Step 4:</strong> IF ARR[I] = VAL
+<br> SET POS = I
+<br> PRINT POS
+<br> Go to Step 6
+<br> [END OF IF]
+<br> SET I = I + 1
+<br> [END OF LOOP]</li>
+<li><strong>Step 5:</strong> IF POS = -1
+<br> PRINT ” VALUE IS NOT PRESENTIN THE ARRAY ”
+<br> [END OF IF]</li>
+<li><strong>Step 6:</strong> EXIT</li>
+</ul>
+<p><img src="./images/linear-search.png" alt="linear-search"></p>
+<h2 id="complexity-of-algorithm"><strong>Complexity of Algorithm :</strong></h2>
+<ul>
+<li><strong>Time Complexity :</strong> O(n)</li>
+<li><strong>Space Complexity :</strong> O(1)</li>
+</ul>
+<h2 id="code"><strong>Code :</strong></h2>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #F97583">module</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">Algos</span><span style="color: #E1E4E8">.Search</span></span>
+<span class="line"><span style="color: #E1E4E8">  ( linearSearch</span></span>
+<span class="line"><span style="color: #E1E4E8">  )</span></span>
+<span class="line"><span style="color: #E1E4E8">  where</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #E1E4E8">import Prelude</span></span>
+<span class="line"><span style="color: #E1E4E8">import Data.List (List(..))</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color: #E1E4E8">-- | Recursive linear search.</span></span>
+<span class="line"><span style="color: #E1E4E8">linearSearchRec :: forall a. Eq a => List a -> a -> Int -> Int</span></span>
+<span class="line"><span style="color: #E1E4E8">linearSearchRec Nil _ _ = -1</span></span>
+<span class="line"><span style="color: #E1E4E8">linearSearchRec (Cons x xs) val n </span></span>
+<span class="line"><span style="color: #E1E4E8">  | x == val  = n</span></span>
+<span class="line"><span style="color: #E1E4E8">  | otherwise = linearSearchRec xs val (n + 1)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #E1E4E8">-- | linearSearch function uses linearSearchRec with initial index as 0.</span></span>
+<span class="line"><span style="color: #E1E4E8">linearSearch :: forall a. Eq a => List a -> a ->  Int</span></span>
+<span class="line"><span style="color: #E1E4E8">linearSearch xs val = linearSearchRec xs val 0</span></span>
+<span class="line"></span></code></pre>
+<h2 id="output"><strong>Output :</strong></h2>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #e1e4e8">2</span></span></code></pre>
+				</div>
+				
+			</div>
+        </main>
+        <footer class="astro-SZ7XMLTE">
+	&copy; 2022 - 2023 Tao Xiang. All rights reserved.
+</footer>
+	</body></html>
