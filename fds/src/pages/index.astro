@@ -1,0 +1,41 @@
+---
+import Layout from '../layouts/Baselayout.astro';
+import LessonDetails from "../components/LessonDetails.astro"
+---
+
+<Layout>
+<div class="jumbotron">
+	<div class="courseInfo">
+		<div class="courseInfo-inner">
+			<h1>Functional Data Structures</h1><h2>Using Purescript</h2></div></div>
+			<div class="courseIcon"><img src="algorithms.png"></div></div>
+			<div class = "mycontent">
+				<h2>TABLE OF CONTENTS</h2>
+
+				<div class="lesson-content">
+					<ol class="sections-name">
+					<LessonDetails
+					sectionTitle="Basics"
+					listItems={[{href: "fds-purs/list-array", text: "List vs Array"}]}
+				/>
+
+				<!-- <LessonDetails
+					sectionTitle="Searching & Sorting"
+					listItems={[{href: "#", text: "List"}, {href: "#", text: "Array"}]}
+				/> -->
+
+				
+					</ol>
+				</div>
+			</div>
+			
+				
+
+</Layout>
+			
+<style>
+	.mycontent{
+	display: grid;
+    place-items: center; /* shorthand for align-items and justify-items */
+	}
+</style>
