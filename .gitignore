@@ -13,6 +13,7 @@ package-lock.json
 .turbo/
 .eslintcache
 .pnpm-store
+output/
 
 # ignore top-level vscode settings
 /.vscode/settings.json
@@ -42,3 +43,4 @@ examples/**/env.d.ts
 /lib/
 .bsb.lock
 .merlin
+.psc-ide-port
