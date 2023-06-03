@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- Global Metadata --><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta name="generator" content="Astro v2.5.6">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+<!-- Canonical URL -->
+<link rel="canonical" href="https://example.com/fds-purs/selectionsort/">
+
+<!-- Primary Meta Tags -->
+<title>Functional Data Structure</title>
+<meta name="title" content="Functional Data Structure">
+<meta name="description" content="Welcome to my website!">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://example.com/fds-purs/selectionsort/">
+<meta property="og:title" content="Functional Data Structure">
+<meta property="og:description" content="Welcome to my website!">
+<meta property="og:image" content="https://example.com/placeholder-social.jpg">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://example.com/fds-purs/selectionsort/">
+<meta property="twitter:title" content="Functional Data Structure">
+<meta property="twitter:description" content="Welcome to my website!">
+<meta property="twitter:image" content="https://example.com/placeholder-social.jpg">
+	<link rel="stylesheet" href="/_astro/index.dbe3beaf.css" /></head>
+	<body>
+		<div class="navbar">
+<a class="navbar-brand" href="/" aria-current="page">
+	<h1>Functional Data Structure</h1>
+</a>
+</div>
+		<br>
+		<br>
+        <main>
+            <div class="lesson-container">
+				<div class="lesson">
+					<p>Selection sort is a simple sorting algorithm. This sorting algorithm is an in-place comparison-based algorithm in which the list is divided into two parts, the sorted part at the left end and the unsorted part at the right end. Initially, the sorted part is empty and the unsorted part is the entire list.</p>
+<p>The smallest element is selected from the unsorted array and swapped with the leftmost element, and that element becomes a part of the sorted array. This process continues moving unsorted array boundary by one element to the right.</p>
+<p>The average and worst-case complexity of selection sort is <code>O(n^2)</code>, where n is the number of items. Due to this, it is not suitable for large data sets.</p>
+<p>Selection sort is generally used when:</p>
+<ul>
+<li>A small array is to be sorted</li>
+<li>Swapping cost doesn’t matter</li>
+<li>It is compulsory to check all elements</li>
+</ul>
+<h2 id="selection-sort-algorithm">Selection Sort Algorithm</h2>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #e1e4e8">selectionSort(array, size)</span></span>
+<span class="line"><span style="color: #e1e4e8">  repeat (size - 1) times</span></span>
+<span class="line"><span style="color: #e1e4e8">  set the first unsorted element as the minimum</span></span>
+<span class="line"><span style="color: #e1e4e8">  for each of the unsorted elements</span></span>
+<span class="line"><span style="color: #e1e4e8">    if element &#x3C; currentMinimum</span></span>
+<span class="line"><span style="color: #e1e4e8">      set element as new minimum</span></span>
+<span class="line"><span style="color: #e1e4e8">  swap minimum with first unsorted position</span></span>
+<span class="line"><span style="color: #e1e4e8">end selectionSort</span></span></code></pre>
+<h2 id="example-for-better-understanding">Example for better understanding</h2>
+<p>Let the elements of array are -</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #e1e4e8">12 29 25 8 32 17 40</span></span></code></pre>
+<p>Now, for the first position in the sorted array, the entire array is to be scanned sequentially.At present, 12 is stored at the first position, after searching the entire array, it is found that 8 is the smallest value.</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #e1e4e8">12 29 25 8 32 17 40</span></span></code></pre>
+<p>So, swap 12 with 8. After the first iteration, 8 will appear at the first position in the sorted array.</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #e1e4e8">8 29 25 12 32 17 40</span></span></code></pre>
+<p>For the second position, where 29 is stored presently, we again sequentially scan the rest of the items of unsorted array. After scanning, we find that 12 is the second lowest element in the array that should be appeared at second position.</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #e1e4e8">8 29 25 12 32 17 40</span></span></code></pre>
+<p>Now, swap 29 with 12. After the second iteration, 12 will appear at the second position in the sorted array. So, after two iterations, the two smallest values are placed at the beginning in a sorted way.</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #e1e4e8">8 12 25 29 32 17 40</span></span></code></pre>
+<p>The same process is applied to the rest of the array elements. So, the entire sorting process is shown below:</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #e1e4e8">8 12 25 29 32 12 40</span></span></code></pre>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #e1e4e8">8 12 17 29 32 25 40</span></span></code></pre>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #e1e4e8">8 12 17 25 32 29 40</span></span></code></pre>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #e1e4e8">8 12 17 25 29 32 40</span></span></code></pre>
+<p>Now, the array is completely sorted.</p>
+<h2 id="implementation-of-selection-sort">Implementation of Selection Sort</h2>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #e1e4e8">module Algos.Sort</span></span>
+<span class="line"><span style="color: #e1e4e8">  ( sel_sort</span></span>
+<span class="line"><span style="color: #e1e4e8">  )</span></span>
+<span class="line"><span style="color: #e1e4e8">  where</span></span>
+<span class="line"><span style="color: #e1e4e8"></span></span>
+<span class="line"><span style="color: #e1e4e8">import Prelude</span></span>
+<span class="line"><span style="color: #e1e4e8"></span></span>
+<span class="line"><span style="color: #e1e4e8">import Data.List (List(..),(:))</span></span>
+<span class="line"><span style="color: #e1e4e8">import Data.Tuple (Tuple(..))</span></span>
+<span class="line"><span style="color: #e1e4e8"></span></span>
+<span class="line"><span style="color: #e1e4e8"></span></span>
+<span class="line"><span style="color: #e1e4e8">findMin :: forall a. Ord a => Partial => List a -> Tuple a (List a)</span></span>
+<span class="line"><span style="color: #e1e4e8">findMin (x : Nil) = Tuple x Nil</span></span>
+<span class="line"><span style="color: #e1e4e8">findMin (x : xs) =  let Tuple y ys = findMin xs </span></span>
+<span class="line"><span style="color: #e1e4e8">    in if x &#x3C; y then Tuple x xs else Tuple y (x : ys)</span></span>
+<span class="line"><span style="color: #e1e4e8"></span></span>
+<span class="line"><span style="color: #e1e4e8"></span></span>
+<span class="line"><span style="color: #e1e4e8">sel_sort :: forall a. Ord a =>Partial => List a -> List a </span></span>
+<span class="line"><span style="color: #e1e4e8">sel_sort Nil = Nil</span></span>
+<span class="line"><span style="color: #e1e4e8">sel_sort xs = let Tuple m ms = findMin xs in (m : (sel_sort ms)) </span></span>
+<span class="line"><span style="color: #e1e4e8"></span></span></code></pre>
+<h2 id="time-complexity-and-space-complexity">Time Complexity and Space Complexity</h2>
+<h3 id="time-complexity">Time Complexity</h3>
+<ul>
+<li><strong>Best Case Complexity:</strong> It occurs when there is no sorting required, i.e. the array is already sorted. The best-case time complexity of selection sort is <code>O(n^2)</code>.</li>
+<li><strong>Average Case Complexity:</strong> It occurs when the array elements are in jumbled order that is not properly ascending and not properly descending. The average case time complexity of selection sort is <code>O(n^2)</code>.</li>
+<li><strong>Worst Case Complexity:</strong> It occurs when the array elements are required to be sorted in reverse order. That means suppose you have to sort the array elements in ascending order, but its elements are in descending order. The worst-case time complexity of selection sort is <code>O(n^2)</code>.</li>
+</ul>
+<h3 id="space-complexity">Space Complexity</h3>
+<ul>
+<li><strong>Space Complexity:</strong> The Space complexity of selection sort is <code>O(1)</code>. It is because, in selection sort, an extra variable is required for swapping.</li>
+</ul>
+<h2 id="the-application-of-selection-sort">The Application of Selection Sort</h2>
+<p>The selection sort is used when:</p>
+<ul>
+<li>a small list is to be sorted</li>
+<li>cost of swapping does not matter</li>
+<li>checking of all the elements is compulsory</li>
+<li>cost of writing to a memory matters like in flash memory</li>
+</ul>
+<h2 id="comparison-to-other-sorting-algorithms">Comparison to other sorting algorithms</h2>
+<ul>
+<li>
+<p><strong>Selection Sort vs QuickSort:</strong> Quicksort, the most widely used sorting algorithm, is contrasted with the less efficient selection sort. Quicksort starts by picking an element, called a pivot , from the list. Selection sort first finds the minimum element in the list.</p>
+</li>
+<li>
+<p><strong>Selection Sort vs Bubble Sort:</strong> The main difference between bubble sort and selection sort is that the bubble sort operates by repeatedly swapping the adjacent elements if they are in the wrong order while the selection sort sorts an array by repeatedly finding the minimum element from the unsorted part and placing that at the beginning of the array.</p>
+</li>
+<li>
+<p><strong>Selection Sort vs Merge Sort:</strong> Selection sort may be faster than mergesort on small input arrays because it’s a simpler algorithm with lower constant factors than the ones hidden by mergesort. If you’re sorting, say, arrays of 16 or so elements, then selection sort might be faster than mergesort.</p>
+</li>
+</ul>
+				</div>
+				
+			</div>
+        </main>
+        <footer class="astro-SZ7XMLTE">
+	&copy; 2022 - 2023 Tao Xiang. All rights reserved.
+</footer>
+	</body></html>
