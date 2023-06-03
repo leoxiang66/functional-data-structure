@@ -4,17 +4,14 @@ import Data.List
 import Prelude
 
 import Algos.Search (linearSearch)
+import Algos.Sort (sel_sort)
 import Data.Array (toUnfoldable)
 import Effect (Effect)
 import Effect.Console (logShow)
 import Fdatatype.Tree (Tree(..), bst, buildBST, preorder, setTree)
 import Fdatatype.Tree (inorder)
+import Partial.Unsafe (unsafePartial)
 
-myArray :: Array Int
-myArray = [5,6,1,345,8]
-
-myList :: List Int
-myList = toUnfoldable myArray
 
 main :: Effect Unit
 main = do
@@ -37,4 +34,4 @@ main = do
   let x = 8
   let result = linearSearch arr x
   logShow(result)
-  
+  logShow (unsafePartial (sel_sort arr))

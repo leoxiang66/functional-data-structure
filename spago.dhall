@@ -12,7 +12,15 @@ to generate this file without the comments in this block.
 -}
 { name = "functional-data-structure-purs"
 , dependencies =
-  [ "arrays", "console", "effect", "foldable-traversable", "lists", "prelude" ]
+  [ "arrays"
+  , "console"
+  , "effect"
+  , "foldable-traversable"
+  , "lists"
+  , "partial"
+  , "prelude"
+  , "tuples"
+  ]
 , packages = ./packages.dhall
 , sources = [ "src/**/*.purs", "test/**/*.purs" ]
 }

@@ -4,13 +4,13 @@ module Algos.Search
   where
 
 import Prelude
-import Data.List (List(..))
+import Data.List (List(..), (:))
 
 
 -- | Recursive linear search.
 linearSearchRec :: forall a. Eq a => List a -> a -> Int -> Int
 linearSearchRec Nil _ _ = -1
-linearSearchRec (Cons x xs) val n 
+linearSearchRec (x : xs) val n 
   | x == val  = n
   | otherwise = linearSearchRec xs val (n + 1)
 
