@@ -11,6 +11,7 @@ import Prelude
 import Data.List (List(..), concat, filter, length, (!!), (:))
 import Data.Maybe (Maybe(..), fromMaybe)
 import Data.Tuple (Tuple(..))
+import Effect.Class.Console (logShow)
 
 
 
@@ -61,10 +62,11 @@ quicksort Nil = Nil
 quicksort (x:xs) = 
    let 
       pivot = fromMaybe x (xs !! (length xs `div` 2))
-      left = filter (_ < pivot) xs
-      middle = filter (_ == pivot) xs
-      right = filter (_ > pivot) xs
+      left = filter (_ < pivot) (x:xs)
+      middle = filter (_ == pivot) (x:xs)
+      right = filter (_ > pivot) (x:xs)
     in
-      concat [quicksort left, middle, quicksort right]
+         quicksort left <> middle <> quicksort right
+      
       
 
