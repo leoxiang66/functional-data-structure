@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- Global Metadata --><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta name="generator" content="Astro v2.5.6">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+<!-- Canonical URL -->
+<link rel="canonical" href="https://example.com/fds-purs/mbst/">
+
+<!-- Primary Meta Tags -->
+<title>Functional Data Structure</title>
+<meta name="title" content="Functional Data Structure">
+<meta name="description" content="Welcome to my website!">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://example.com/fds-purs/mbst/">
+<meta property="og:title" content="Functional Data Structure">
+<meta property="og:description" content="Welcome to my website!">
+<meta property="og:image" content="https://example.com/placeholder-social.jpg">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://example.com/fds-purs/mbst/">
+<meta property="twitter:title" content="Functional Data Structure">
+<meta property="twitter:description" content="Welcome to my website!">
+<meta property="twitter:image" content="https://example.com/placeholder-social.jpg">
+	<link rel="stylesheet" href="/_astro/index.dbe3beaf.css" /></head>
+	<body>
+		<div class="navbar">
+<a class="navbar-brand" href="/" aria-current="page">
+	<h1>Functional Data Structure</h1>
+</a>
+</div>
+		<br>
+		<br>
+        <main>
+            <div class="lesson-container">
+				<div class="lesson">
+					<h1 id="mtree-in-purescript-a-detailed-overview">MTree in PureScript: A Detailed Overview</h1>
+<p>In this article, we’ll examine the concept of MTree, a specialized tree structure, and demonstrate how it’s implemented in PureScript.</p>
+<h2 id="what-is-an-mtree">What is an MTree?</h2>
+<p>An MTree is a type of binary tree where each node carries an additional piece of information: the maximum value found in that subtree. This includes the node’s value itself and all values in its left and right child subtrees.</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #F97583">data</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">MTree</span><span style="color: #E1E4E8"> a</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #85E89D">Leaf</span><span style="color: #E1E4E8"> </span></span>
+<span class="line"><span style="color: #E1E4E8">  | </span><span style="color: #85E89D">Node</span><span style="color: #E1E4E8"> (</span><span style="color: #B392F0">MTree</span><span style="color: #E1E4E8"> a) a a (</span><span style="color: #B392F0">MTree</span><span style="color: #E1E4E8"> a) </span><span style="color: #6A737D">-- l max value r</span></span></code></pre>
+<h2 id="purescript-implementation">PureScript Implementation</h2>
+<h3 id="building-an-mtree">Building an MTree</h3>
+<p>An MTree is defined recursively. An MTree is either a <code>Leaf</code> or a <code>Node</code> which consists of a left MTree, the maximum value within that node’s tree, the node’s value, and the right MTree.</p>
+<h3 id="operations-on-mtree">Operations on MTree</h3>
+<h4 id="set-creation">Set Creation</h4>
+<p>A set representation of an MTree can be created using the <code>setMTree</code> function. This function traverses the MTree and adds all node values to a Set.</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #B392F0">setMTree</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">::</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">forall</span><span style="color: #E1E4E8"> a. </span><span style="color: #B392F0">Ord</span><span style="color: #E1E4E8"> a </span><span style="color: #F97583">=></span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">MTree</span><span style="color: #E1E4E8"> a </span><span style="color: #F97583">-></span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">Set</span><span style="color: #E1E4E8"> a</span></span>
+<span class="line"><span style="color: #E1E4E8">setMTree tree </span><span style="color: #F97583">=</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">case</span><span style="color: #E1E4E8"> tree </span><span style="color: #F97583">of</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #85E89D">Leaf</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">-></span><span style="color: #E1E4E8"> empty</span><span style="color: #F97583">::</span><span style="color: #85E89D">Set</span><span style="color: #E1E4E8"> a</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #85E89D">Node</span><span style="color: #E1E4E8"> left _ value right </span><span style="color: #F97583">-></span></span>
+<span class="line"><span style="color: #E1E4E8">      </span><span style="color: #F97583">let</span><span style="color: #E1E4E8"> subset1 </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> insert (setMTree left) value</span></span>
+<span class="line"><span style="color: #E1E4E8">          subset2 </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> setMTree right</span></span>
+<span class="line"><span style="color: #E1E4E8">      </span><span style="color: #F97583">in</span><span style="color: #E1E4E8"> union subset1 subset2</span></span></code></pre>
+<h4 id="maximum-binary-search-tree-validation">Maximum Binary Search Tree Validation</h4>
+<p>To check if an MTree maintains the properties of a Maximum Binary Search Tree (MBST), we use the <code>mbst</code> function. This function validates three conditions:</p>
+<ul>
+<li>The subtrees <code>l</code> and <code>r</code> should themselves be valid MBSTs.</li>
+<li>The node’s value <code>a</code> should be greater than all elements in the left subtree and less than all elements in the right subtree.</li>
+<li>The maximum value <code>m</code> for the node should be greater than all values in the tree rooted at the node and also be present in the tree rooted at the node.</li>
+</ul>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #B392F0">mbst</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">::</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">forall</span><span style="color: #E1E4E8"> a. </span><span style="color: #B392F0">Ord</span><span style="color: #E1E4E8"> a </span><span style="color: #F97583">=></span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">MTree</span><span style="color: #E1E4E8"> a </span><span style="color: #F97583">-></span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">Boolean</span></span>
+<span class="line"><span style="color: #E1E4E8">mbst tree </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">case</span><span style="color: #E1E4E8"> tree </span><span style="color: #F97583">of</span><span style="color: #E1E4E8"> </span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #85E89D">Leaf</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">-></span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">true</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #85E89D">Node</span><span style="color: #E1E4E8"> l m a r </span><span style="color: #F97583">-></span><span style="color: #E1E4E8"> (mbst l) </span><span style="color: #F97583">&#x26;&#x26;</span><span style="color: #E1E4E8"> (mbst r) </span><span style="color: #F97583">&#x26;&#x26;</span><span style="color: #E1E4E8"> </span></span>
+<span class="line"><span style="color: #E1E4E8">      (all (lessThan a) (setMTree r)) </span><span style="color: #F97583">&#x26;&#x26;</span></span>
+<span class="line"><span style="color: #E1E4E8">      (all (greaterThan a) (setMTree l)) </span><span style="color: #F97583">&#x26;&#x26;</span></span>
+<span class="line"><span style="color: #E1E4E8">      (all (greaterThan m) (setMTree (</span><span style="color: #85E89D">Node</span><span style="color: #E1E4E8"> </span><span style="color: #85E89D">Leaf</span><span style="color: #E1E4E8"> m a r))) </span><span style="color: #F97583">&#x26;&#x26;</span></span>
+<span class="line"><span style="color: #E1E4E8">      (belongsto m (setMTree (</span><span style="color: #85E89D">Node</span><span style="color: #E1E4E8"> </span><span style="color: #85E89D">Leaf</span><span style="color: #E1E4E8"> m a r)))</span></span></code></pre>
+<h2 id="conclusion">Conclusion</h2>
+<p>MTree is a valuable variation of the binary tree that can allow for more efficient processing of certain tree operations, like retrieving the maximum value in a tree. Its implementation in PureScript demonstrates the flexibility and power of the PureScript type system, as well as its capacity for effectively modeling and solving complex data structures and problems.</p>
+				</div>
+				
+			</div>
+        </main>
+        <footer class="astro-SZ7XMLTE">
+	&copy; 2022 - 2023 Tao Xiang. All rights reserved.
+</footer>
+	</body></html>
