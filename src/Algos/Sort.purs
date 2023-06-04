@@ -1,6 +1,7 @@
 module Algos.Sort
   ( bubbleSort
   , insort
+  , mergeSort
   , quickselect
   , quicksort
   , sel_sort
@@ -9,10 +10,11 @@ module Algos.Sort
 
 import Prelude
 
-import Data.List (List(..), filter, length, (!!), (:))
+
+import Data.List (List(..), filter, length, (!!), (:), take, drop)
 import Data.Maybe (Maybe(..), fromMaybe)
 import Data.Tuple (Tuple(..))
-import Prim.RowList (Nil)
+
 
 
 
@@ -80,3 +82,25 @@ bb_1 x = x
 bubbleSort :: forall a.Ord a => List a -> List a
 bubbleSort Nil = Nil
 bubbleSort (x:xs) = bb_1 (x:(bubbleSort xs))
+
+-- Merge Sort
+mergeSort :: forall a. Ord a => List a -> List a
+mergeSort Nil = Nil 
+mergeSort (x:Nil) = x:Nil
+mergeSort arr = 
+  let 
+      mid_id = length arr `div` 2
+      left = take mid_id arr 
+      right = drop mid_id arr 
+    in 
+    merge (mergeSort left) (mergeSort right)
+
+
+
+merge :: forall a. Ord a => List a -> List a -> List a
+merge Nil Nil = Nil 
+merge (x:xs) Nil = x:xs 
+merge Nil (y:ys) = y:ys
+merge (x:xs) (y:ys)
+  | x <= y = x :  merge xs (y:ys)
+  | otherwise = y : merge (x:xs) ys
