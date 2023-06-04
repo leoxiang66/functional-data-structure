@@ -86,7 +86,6 @@
 <span class="line"><span style="color: #E1E4E8">merge (x</span><span style="color: #F97583">:</span><span style="color: #E1E4E8">xs) (y</span><span style="color: #F97583">:</span><span style="color: #E1E4E8">ys)</span></span>
 <span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">|</span><span style="color: #E1E4E8"> x </span><span style="color: #F97583">&#x3C;=</span><span style="color: #E1E4E8"> y </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> x </span><span style="color: #F97583">:</span><span style="color: #E1E4E8">  merge xs (y</span><span style="color: #F97583">:</span><span style="color: #E1E4E8">ys)</span></span>
 <span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">|</span><span style="color: #E1E4E8"> otherwise </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> y </span><span style="color: #F97583">:</span><span style="color: #E1E4E8"> merge (x</span><span style="color: #F97583">:</span><span style="color: #E1E4E8">xs) ys</span></span></code></pre>
-<p>Note: In this example, we are using PureScript’s built-in <code>sort</code> function for merging the arrays. A real-world implementation would require a more complex merging function that merges two arrays in a way that maintains their order.</p>
 <h2 id="advantages-of-merge-sort">Advantages of Merge Sort</h2>
 <ul>
 <li>Merge sort has a worst-case time complexity of O(n log n), which is one of the best among comparison-based sorting algorithms.</li>

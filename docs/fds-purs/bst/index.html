@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- Global Metadata --><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta name="generator" content="Astro v2.5.6">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+<!-- Canonical URL -->
+<link rel="canonical" href="https://example.com/fds-purs/bst/">
+
+<!-- Primary Meta Tags -->
+<title>Functional Data Structure</title>
+<meta name="title" content="Functional Data Structure">
+<meta name="description" content="Welcome to my website!">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://example.com/fds-purs/bst/">
+<meta property="og:title" content="Functional Data Structure">
+<meta property="og:description" content="Welcome to my website!">
+<meta property="og:image" content="https://example.com/placeholder-social.jpg">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://example.com/fds-purs/bst/">
+<meta property="twitter:title" content="Functional Data Structure">
+<meta property="twitter:description" content="Welcome to my website!">
+<meta property="twitter:image" content="https://example.com/placeholder-social.jpg">
+	<link rel="stylesheet" href="/_astro/index.dbe3beaf.css" /></head>
+	<body>
+		<div class="navbar">
+<a class="navbar-brand" href="/" aria-current="page">
+	<h1>Functional Data Structure</h1>
+</a>
+</div>
+		<br>
+		<br>
+        <main>
+            <div class="lesson-container">
+				<div class="lesson">
+					<h1 id="binary-search-trees-in-purescript-a-comprehensive-guide">Binary Search Trees in PureScript: A Comprehensive Guide</h1>
+<p>In this article, we will take a deep dive into the world of Binary Search Trees (BST) and their implementation in PureScript.</p>
+<h2 id="what-is-a-binary-search-tree">What is a Binary Search Tree?</h2>
+<p>A Binary Search Tree (BST) is a tree data structure in which each node has at most two children, referred to as the left child and the right child. For each node, all elements in the left subtree are less than the node, and all elements in the right subtree are greater.</p>
+<h2 id="purescript-implementation">PureScript Implementation</h2>
+<p>In PureScript, we can define a binary tree as a custom data type <code>Tree</code>, which is either a <code>Leaf</code> (an empty tree) or a <code>Node</code> that contains a value and two subtrees (left and right).</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #F97583">data</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">Tree</span><span style="color: #E1E4E8"> a </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #85E89D">Leaf</span><span style="color: #E1E4E8"> | </span><span style="color: #85E89D">Node</span><span style="color: #E1E4E8"> (</span><span style="color: #B392F0">Tree</span><span style="color: #E1E4E8"> a) a (</span><span style="color: #B392F0">Tree</span><span style="color: #E1E4E8"> a)</span></span></code></pre>
+<p>Here <code>a</code> is a type variable, indicating that our tree can store elements of any type.</p>
+<h3 id="inserting-elements">Inserting Elements</h3>
+<p>We can insert elements into the BST using the <code>insertElement</code> function:</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #B392F0">insertElement</span><span style="color: #F97583">::</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">forall</span><span style="color: #E1E4E8"> a. </span><span style="color: #B392F0">Ord</span><span style="color: #E1E4E8"> a </span><span style="color: #F97583">=></span><span style="color: #E1E4E8"> a </span><span style="color: #F97583">-></span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">Tree</span><span style="color: #E1E4E8"> a </span><span style="color: #F97583">-></span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">Tree</span><span style="color: #E1E4E8"> a</span></span>
+<span class="line"><span style="color: #E1E4E8">insertElement x </span><span style="color: #85E89D">Leaf</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #85E89D">Node</span><span style="color: #E1E4E8"> </span><span style="color: #85E89D">Leaf</span><span style="color: #E1E4E8"> x </span><span style="color: #85E89D">Leaf</span></span>
+<span class="line"><span style="color: #E1E4E8">insertElement x (</span><span style="color: #85E89D">Node</span><span style="color: #E1E4E8"> l a r) </span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">|</span><span style="color: #E1E4E8"> x </span><span style="color: #F97583">&#x3C;</span><span style="color: #E1E4E8"> a </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #85E89D">Node</span><span style="color: #E1E4E8"> (insertElement x l) a r</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">|</span><span style="color: #E1E4E8"> otherwise </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #85E89D">Node</span><span style="color: #E1E4E8"> l a (insertElement x r)</span></span></code></pre>
+<p>This function inserts a new value into the correct position in the tree to maintain the BST property.</p>
+<h3 id="building-a-bst">Building a BST</h3>
+<p>We can build a BST from a list of elements using the <code>buildBST</code> function:</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #B392F0">buildBST</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">::</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">forall</span><span style="color: #E1E4E8"> a. </span><span style="color: #B392F0">Ord</span><span style="color: #E1E4E8"> a </span><span style="color: #F97583">=></span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">List</span><span style="color: #E1E4E8"> a </span><span style="color: #F97583">-></span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">Tree</span><span style="color: #E1E4E8"> a</span></span>
+<span class="line"><span style="color: #E1E4E8">buildBST </span><span style="color: #85E89D">Nil</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #85E89D">Leaf</span></span>
+<span class="line"><span style="color: #E1E4E8">buildBST (</span><span style="color: #85E89D">Cons</span><span style="color: #E1E4E8"> x xs) </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> insertElement x (buildBST xs)</span></span></code></pre>
+<p>This function constructs a BST by inserting each element of the list into the tree one by one.</p>
+<h3 id="traversals">Traversals</h3>
+<p>We can traverse the BST in different orders. For instance, <code>preorder</code> and <code>inorder</code> functions are implemented as follows:</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #B392F0">preorder</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">::</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">forall</span><span style="color: #E1E4E8"> a. </span><span style="color: #B392F0">Ord</span><span style="color: #E1E4E8"> a </span><span style="color: #F97583">=></span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">Tree</span><span style="color: #E1E4E8"> a </span><span style="color: #F97583">-></span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">Array</span><span style="color: #E1E4E8"> a</span></span>
+<span class="line"><span style="color: #E1E4E8">preorder </span><span style="color: #85E89D">Leaf</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> []</span></span>
+<span class="line"><span style="color: #E1E4E8">preorder (</span><span style="color: #85E89D">Node</span><span style="color: #E1E4E8"> l a r) </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> concat [[a], preorder l,  preorder r]</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #B392F0">inorder</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">::</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">forall</span><span style="color: #E1E4E8"> a. </span><span style="color: #B392F0">Ord</span><span style="color: #E1E4E8"> a </span><span style="color: #F97583">=></span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">Tree</span><span style="color: #E1E4E8"> a </span><span style="color: #F97583">-></span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">Array</span><span style="color: #E1E4E8"> a</span></span>
+<span class="line"><span style="color: #E1E4E8">inorder </span><span style="color: #85E89D">Leaf</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> []</span></span>
+<span class="line"><span style="color: #E1E4E8">inorder (</span><span style="color: #85E89D">Node</span><span style="color: #E1E4E8"> l a r) </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> concat [preorder l, [a], preorder r]</span></span></code></pre>
+<ul>
+<li>Preorder traversal visits the current node before its child nodes.</li>
+<li>Inorder traversal visits the left child, then the current node, and finally, the right child. This will return the values in a sorted order for a BST.</li>
+</ul>
+<h3 id="validating-a-bst">Validating a BST</h3>
+<p>We can check if a tree is a valid BST using the <code>bst</code> function:</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #B392F0">bst</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">::</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">forall</span><span style="color: #E1E4E8"> a. </span><span style="color: #B392F0">Ord</span><span style="color: #E1E4E8"> a </span><span style="color: #F97583">=></span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">Tree</span><span style="color: #E1E4E8"> a </span><span style="color: #F97583">-></span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">Boolean</span></span>
+<span class="line"><span style="color: #E1E4E8">bst tree </span><span style="color: #F97583">=</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">case</span><span style="color: #E1E4E8"> tree </span><span style="color: #F97583">of</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #85E89D">Leaf</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">-></span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">true</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #85E89D">Node</span><span style="color: #E1E4E8"> left value right </span><span style="color: #F97583">-></span></span>
+<span class="line"><span style="color: #E1E4E8">      </span><span style="color: #F97583">let</span><span style="color: #E1E4E8"> lt x </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> x </span><span style="color: #F97583">&#x3C;=</span><span style="color: #E1E4E8"> value</span></span>
+<span class="line"><span style="color: #E1E4E8">          gt x </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> x </span><span style="color: #F97583">>=</span><span style="color: #E1E4E8"> value</span></span>
+<span class="line"><span style="color: #E1E4E8">      </span><span style="color: #F97583">in</span><span style="color: #E1E4E8"> all lt (setTree left) </span><span style="color: #F97583">&#x26;&#x26;</span><span style="color: #E1E4E8"> all gt (setTree right) </span><span style="color: #F97583">&#x26;&#x26;</span><span style="color: #E1E4E8"> bst left </span><span style="color: #F97583">&#x26;&#x26;</span><span style="color: #E1E4E8"> bst right</span></span></code></pre>
+<p>This function checks if all elements in the left subtree are less than the node and all elements in the right subtree are greater. It does this check recursively for all nodes.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Binary Search Trees are powerful data structures that allow fast lookup, addition, and removal of items, and can be used to implement ordered collections of items. PureScript provides a type-safe and functional way to implement and work with BSTs.</p>
+				</div>
+				
+			</div>
+        </main>
+        <footer class="astro-SZ7XMLTE">
+	&copy; 2022 - 2023 Tao Xiang. All rights reserved.
+</footer>
+	</body></html>
