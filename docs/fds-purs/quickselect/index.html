@@ -46,7 +46,7 @@
 <p>QuickSelect uses a “divide and conquer” strategy similar to QuickSort. It starts by choosing a “pivot” from the list. The list is then partitioned into two sub-lists, one with elements less than the pivot and one with elements greater than the pivot. This is done in linear time using the Lomuto or Hoare partitioning scheme.</p>
 <p>However, unlike QuickSort, which recursively processes both sub-lists, QuickSelect only processes the sub-list that the k-th element is in. This is what gives QuickSelect its average time complexity of O(n), making it faster than sorting the list and picking the k-th element (which would take O(n log n) time).</p>
 <h2 id="the-algorithm">The Algorithm</h2>
-<p>Here is a simplified implementation of QuickSelect in Python:</p>
+<p>Here is a simplified implementation of QuickSelect in Purescript:</p>
 <pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #e1e4e8">module QuickSelect where</span></span>
 <span class="line"><span style="color: #e1e4e8"></span></span>
 <span class="line"><span style="color: #e1e4e8">import Prelude</span></span>
