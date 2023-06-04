@@ -14,7 +14,7 @@ However, unlike QuickSort, which recursively processes both sub-lists, QuickSele
 
 ## The Algorithm
 
-Here is a simplified implementation of QuickSelect in Python:
+Here is a simplified implementation of QuickSelect in Purescript:
 
 ```
 module QuickSelect where
