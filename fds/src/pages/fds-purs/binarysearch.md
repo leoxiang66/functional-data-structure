@@ -46,17 +46,23 @@ In this pseudocode:
 Here is how the algorithm can be implemented in PureScript:
 
 ```purescript
-binarySearch :: Array Int -> Int -> Maybe Int
-binarySearch xs x = go 0 (length xs - 1)
-  where
-    go :: Int -> Int -> Maybe Int
-    go lo hi
-      | lo > hi = Nothing
-      | xs ! mid < x = go (mid + 1) hi
-      | xs ! mid > x = go lo (mid - 1)
-      | otherwise = Just mid
-      where
-        mid = lo + ((hi - lo) / 2)
+binarySearch :: forall a. Ord a => List a -> a -> Int
+binarySearch Nil _ = -1
+binarySearch (x:Nil) val
+  | x == val = 0
+  |otherwise = -1
+binarySearch (x:y:Nil) val
+  | x == val = 0
+  | y == val = 1
+  |otherwise = -1
+binarySearch (x:xs) val = 
+  let mid_id = (length (x:xs) `div` 2) in 
+  let mid = fromMaybe (x) ((x:xs) !!  mid_id) in 
+    if (val == mid) then mid_id 
+    else if (val < mid) then (binarySearch (take mid_id (x:xs)) val) 
+    else let tmp = binarySearch (drop (mid_id+1) (x:xs)) val in 
+      if tmp == -1 then -1
+      else mid_id + 1 + tmp
 ```
 
 ## Advantages of Binary Search
