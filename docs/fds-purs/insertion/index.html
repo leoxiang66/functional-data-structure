@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- Global Metadata --><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta name="generator" content="Astro v2.5.6">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+<!-- Canonical URL -->
+<link rel="canonical" href="https://example.com/fds-purs/insertion/">
+
+<!-- Primary Meta Tags -->
+<title>Functional Data Structure</title>
+<meta name="title" content="Functional Data Structure">
+<meta name="description" content="Welcome to my website!">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://example.com/fds-purs/insertion/">
+<meta property="og:title" content="Functional Data Structure">
+<meta property="og:description" content="Welcome to my website!">
+<meta property="og:image" content="https://example.com/placeholder-social.jpg">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://example.com/fds-purs/insertion/">
+<meta property="twitter:title" content="Functional Data Structure">
+<meta property="twitter:description" content="Welcome to my website!">
+<meta property="twitter:image" content="https://example.com/placeholder-social.jpg">
+	<link rel="stylesheet" href="/_astro/index.dbe3beaf.css" /></head>
+	<body>
+		<div class="navbar">
+<a class="navbar-brand" href="/" aria-current="page">
+	<h1>Functional Data Structure</h1>
+</a>
+</div>
+		<br>
+		<br>
+        <main>
+            <div class="lesson-container">
+				<div class="lesson">
+					<p>Insertion sort is the sorting mechanism where the sorted array is built having one item at a time. The array elements are compared with each other sequentially and then arranged simultaneously in some particular order.</p>
+<h2 id="explanation">Explanation</h2>
+<p>The first element of the array forms the sorted subarray while the rest create the unsorted subarray from which we choose an element one by one and <strong>insert</strong> the same in the sorted subarray. The same procedure is followed until we reach the end of the array.</p>
+<p>In each iteration, we extend the sorted subarray while shrinking the unsorted subarray. The array is searched sequentially and unsorted items are moved and inserted into the sorted sub-list (in the same array).</p>
+<ul>
+<li>If it is the first element, it is already sorted. return 1;</li>
+<li>Pick next element</li>
+<li>Compare with all elements in the sorted sub-list</li>
+<li>Shift all the elements in the sorted sub-list that is greater than the value to be sorted</li>
+<li>Insert the value</li>
+<li>Repeat until list is sorted</li>
+</ul>
+<h2 id="pseudocode">Pseudocode</h2>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #e1e4e8">procedure insertionSort( A : array of items )</span></span>
+<span class="line"><span style="color: #e1e4e8">   int holePosition</span></span>
+<span class="line"><span style="color: #e1e4e8">   int valueToInsert</span></span>
+<span class="line"><span style="color: #e1e4e8">	</span></span>
+<span class="line"><span style="color: #e1e4e8">   for i = 1 to length(A) inclusive do:</span></span>
+<span class="line"><span style="color: #e1e4e8">	</span></span>
+<span class="line"><span style="color: #e1e4e8">      /* select value to be inserted */</span></span>
+<span class="line"><span style="color: #e1e4e8">      valueToInsert = A[i]</span></span>
+<span class="line"><span style="color: #e1e4e8">      holePosition = i</span></span>
+<span class="line"><span style="color: #e1e4e8">      </span></span>
+<span class="line"><span style="color: #e1e4e8">      /*locate hole position for the element to be inserted */</span></span>
+<span class="line"><span style="color: #e1e4e8">		</span></span>
+<span class="line"><span style="color: #e1e4e8">      while holePosition > 0 and A[holePosition-1] > valueToInsert do:</span></span>
+<span class="line"><span style="color: #e1e4e8">         A[holePosition] = A[holePosition-1]</span></span>
+<span class="line"><span style="color: #e1e4e8">         holePosition = holePosition -1</span></span>
+<span class="line"><span style="color: #e1e4e8">      end while</span></span>
+<span class="line"><span style="color: #e1e4e8">		</span></span>
+<span class="line"><span style="color: #e1e4e8">      /* insert the number at hole position */</span></span>
+<span class="line"><span style="color: #e1e4e8">      A[holePosition] = valueToInsert</span></span>
+<span class="line"><span style="color: #e1e4e8">      </span></span>
+<span class="line"><span style="color: #e1e4e8">   end for</span></span>
+<span class="line"><span style="color: #e1e4e8">	</span></span>
+<span class="line"><span style="color: #e1e4e8">end procedure</span></span></code></pre>
+<h2 id="complexity-analysis">Complexity analysis</h2>
+<p>Insertion sort runs in <em>O</em>(<em>n</em>) time in its best case and runs in <em>O</em>(<em>n</em>²) in its worst and average cases.</p>
+<h3 id="best-case">Best case</h3>
+<p>Insertion sort performs two operations: it scans through the list, comparing each pair of elements, and it swaps elements if they are out of order. Each operation contributes to the running time of the algorithm. If the input array is already in sorted order, insertion sort compares <em>O</em>(<em>n</em>) elements and performs no swaps. Therefore, in the best case, insertion sort runs in O(<em>n</em>) time.</p>
+<h3 id="worst-case">Worst case</h3>
+<p>The worst case for insertion sort will occur when the input list is in decreasing order. To insert the last element, we need at most <em>n</em>−1 comparisons and at most <em>n</em>−1 swaps. To insert the second to last element, we need at most <em>n</em>−2 comparisons and at most <em>n</em>−2 swaps, and so on. The number of operations needed to perform insertion sort is therefore: 2 × (1+2+⋯+<em>n</em> −2+<em>n</em> −1) . This is in the order of sum of first n-1 numbers which is quadratic in nature. therefore, in the worst case, insertion sort runs in O(<em>n</em>²) time.</p>
+<blockquote>
+<p>The average case and the worst case have the same time complexity. Try to think why is this happening.</p>
+</blockquote>
+<h2 id="code-implementation">Code Implementation</h2>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #e1e4e8">-- insert an element while keeping the list ordered</span></span>
+<span class="line"><span style="color: #e1e4e8">insert_ :: forall a. Ord a => a -> List a  -> List a </span></span>
+<span class="line"><span style="color: #e1e4e8">insert_ x Nil = x:Nil</span></span>
+<span class="line"><span style="color: #e1e4e8">insert_ x (y:ys) </span></span>
+<span class="line"><span style="color: #e1e4e8">  | x &#x3C;= y = (x:y:ys)</span></span>
+<span class="line"><span style="color: #e1e4e8">  | otherwise = (y: (insert_ x ys))</span></span>
+<span class="line"><span style="color: #e1e4e8"></span></span>
+<span class="line"><span style="color: #e1e4e8"></span></span>
+<span class="line"><span style="color: #e1e4e8">insort :: forall a. Ord a => List a -> List a</span></span>
+<span class="line"><span style="color: #e1e4e8">insort Nil = Nil</span></span>
+<span class="line"><span style="color: #e1e4e8">insort (x:xs) = insert_ x (insort xs)</span></span></code></pre>
+<h2 id="advantages">Advantages</h2>
+<ul>
+<li>Simple and easy to understand implementation</li>
+<li>Efficient for small data</li>
+<li>If the input list is sorted beforehand (partially) then insertions sort takes <code>**O(n+d)**</code> where d is the number of inversions</li>
+<li>Chosen over bubble sort and selection sort, although all have worst case time complexity as <code>**O(n^2)**</code></li>
+<li>Maintains relative order of the input data in case of two equal values (stable)</li>
+<li>It requires only a constant amount <code>**O(1)**</code> of additional memory space (in-place Algorithm)</li>
+</ul>
+<h2 id="applications">Applications</h2>
+<ul>
+<li>It could be used in sorting small lists.</li>
+<li>It could be used in sorting “almost sorted” lists.</li>
+<li>It could be used to sort smaller sub problem in Quick Sort.</li>
+</ul>
+				</div>
+				
+			</div>
+        </main>
+        <footer class="astro-SZ7XMLTE">
+	&copy; 2022 - 2023 Tao Xiang. All rights reserved.
+</footer>
+	</body></html>
