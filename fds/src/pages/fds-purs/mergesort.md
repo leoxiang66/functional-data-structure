@@ -39,25 +39,26 @@ In this pseudocode:
 Here is how the algorithm can be implemented in PureScript:
 
 ```purescript
-module MergeSort where
+mergeSort :: forall a. Ord a => List a -> List a
+mergeSort Nil = Nil 
+mergeSort (x:Nil) = x:Nil
+mergeSort arr = 
+  let 
+      mid_id = length arr `div` 2
+      left = take mid_id arr 
+      right = drop mid_id arr 
+    in 
+    merge (mergeSort left) (mergeSort right)
 
-import Prelude
-import Data.Array (length, take, drop, sort)
 
-mergeSort :: forall a. Ord a => Array a -> Array a
-mergeSort arr =
-  if length arr <= 1 then
-    arr
-  else
-    let
-      mid = length arr / 2
-      left = take mid arr
-      right = drop mid arr
-    in
-      merge (mergeSort left) (mergeSort right)
 
-merge :: forall a. Ord a => Array a -> Array a -> Array a
-merge arr1 arr2 = sort (arr1 <> arr2)
+merge :: forall a. Ord a => List a -> List a -> List a
+merge Nil Nil = Nil 
+merge (x:xs) Nil = x:xs 
+merge Nil (y:ys) = y:ys
+merge (x:xs) (y:ys)
+  | x <= y = x :  merge xs (y:ys)
+  | otherwise = y : merge (x:xs) ys
 ```
 
 Note: In this example, we are using PureScript's built-in `sort` function for merging the arrays. A real-world implementation would require a more complex merging function that merges two arrays in a way that maintains their order.

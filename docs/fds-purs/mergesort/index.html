@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- Global Metadata --><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta name="generator" content="Astro v2.5.6">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+<!-- Canonical URL -->
+<link rel="canonical" href="https://example.com/fds-purs/mergesort/">
+
+<!-- Primary Meta Tags -->
+<title>Functional Data Structure</title>
+<meta name="title" content="Functional Data Structure">
+<meta name="description" content="Welcome to my website!">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://example.com/fds-purs/mergesort/">
+<meta property="og:title" content="Functional Data Structure">
+<meta property="og:description" content="Welcome to my website!">
+<meta property="og:image" content="https://example.com/placeholder-social.jpg">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://example.com/fds-purs/mergesort/">
+<meta property="twitter:title" content="Functional Data Structure">
+<meta property="twitter:description" content="Welcome to my website!">
+<meta property="twitter:image" content="https://example.com/placeholder-social.jpg">
+	<link rel="stylesheet" href="/_astro/index.dbe3beaf.css" /></head>
+	<body>
+		<div class="navbar">
+<a class="navbar-brand" href="/" aria-current="page">
+	<h1>Functional Data Structure</h1>
+</a>
+</div>
+		<br>
+		<br>
+        <main>
+            <div class="lesson-container">
+				<div class="lesson">
+					<h1 id="merge-sort-a-comprehensive-guide">Merge Sort: A Comprehensive Guide</h1>
+<p>Merge Sort is a powerful and efficient sorting algorithm that employs a divide-and-conquer strategy. It breaks down the array into smaller subarrays, sorts them individually, and then merges them back together.</p>
+<h2 id="algorithm">Algorithm</h2>
+<p>Merge sort works as follows:</p>
+<ol>
+<li><strong>Divide:</strong> If the list is of length 0 or 1, then it is already sorted. Otherwise, divide the unsorted list into two sublists, each about half the size.</li>
+<li><strong>Conquer:</strong> Recursively sort both sublists.</li>
+<li><strong>Combine:</strong> Merge the two sorted sublists back into one sorted list.</li>
+</ol>
+<h2 id="pseudocode">Pseudocode</h2>
+<p>Here’s a simple pseudocode representation of the merge sort algorithm:</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #e1e4e8">function mergeSort(arr)</span></span>
+<span class="line"><span style="color: #e1e4e8">  if length(arr) &#x3C;= 1</span></span>
+<span class="line"><span style="color: #e1e4e8">    return arr</span></span>
+<span class="line"><span style="color: #e1e4e8">  mid := length(arr) / 2</span></span>
+<span class="line"><span style="color: #e1e4e8">  left := mergeSort(arr[0..mid])</span></span>
+<span class="line"><span style="color: #e1e4e8">  right := mergeSort(arr[mid+1..end])</span></span>
+<span class="line"><span style="color: #e1e4e8">  return merge(left, right)</span></span></code></pre>
+<p>In this pseudocode:</p>
+<ul>
+<li><code>arr</code> represents the array to be sorted.</li>
+<li><code>mergeSort</code> is a recursive function, calling itself for the <code>left</code> and <code>right</code> halves of the array.</li>
+<li>The <code>merge</code> function is used to merge two sorted arrays into one.</li>
+</ul>
+<h2 id="implementation-in-purescript">Implementation in PureScript</h2>
+<p>Here is how the algorithm can be implemented in PureScript:</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #B392F0">mergeSort</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">::</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">forall</span><span style="color: #E1E4E8"> a. </span><span style="color: #B392F0">Ord</span><span style="color: #E1E4E8"> a </span><span style="color: #F97583">=></span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">List</span><span style="color: #E1E4E8"> a </span><span style="color: #F97583">-></span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">List</span><span style="color: #E1E4E8"> a</span></span>
+<span class="line"><span style="color: #E1E4E8">mergeSort </span><span style="color: #85E89D">Nil</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #85E89D">Nil</span><span style="color: #E1E4E8"> </span></span>
+<span class="line"><span style="color: #E1E4E8">mergeSort (x</span><span style="color: #F97583">:</span><span style="color: #85E89D">Nil</span><span style="color: #E1E4E8">) </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> x</span><span style="color: #F97583">:</span><span style="color: #85E89D">Nil</span></span>
+<span class="line"><span style="color: #E1E4E8">mergeSort arr </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">let</span><span style="color: #E1E4E8"> </span></span>
+<span class="line"><span style="color: #E1E4E8">      mid_id </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> length arr </span><span style="color: #F97583">`div`</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">2</span></span>
+<span class="line"><span style="color: #E1E4E8">      left </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> take mid_id arr </span></span>
+<span class="line"><span style="color: #E1E4E8">      right </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> drop mid_id arr </span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #F97583">in</span><span style="color: #E1E4E8"> </span></span>
+<span class="line"><span style="color: #E1E4E8">    merge (mergeSort left) (mergeSort right)</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color: #B392F0">merge</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">::</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">forall</span><span style="color: #E1E4E8"> a. </span><span style="color: #B392F0">Ord</span><span style="color: #E1E4E8"> a </span><span style="color: #F97583">=></span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">List</span><span style="color: #E1E4E8"> a </span><span style="color: #F97583">-></span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">List</span><span style="color: #E1E4E8"> a </span><span style="color: #F97583">-></span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">List</span><span style="color: #E1E4E8"> a</span></span>
+<span class="line"><span style="color: #E1E4E8">merge </span><span style="color: #85E89D">Nil</span><span style="color: #E1E4E8"> </span><span style="color: #85E89D">Nil</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #85E89D">Nil</span><span style="color: #E1E4E8"> </span></span>
+<span class="line"><span style="color: #E1E4E8">merge (x</span><span style="color: #F97583">:</span><span style="color: #E1E4E8">xs) </span><span style="color: #85E89D">Nil</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> x</span><span style="color: #F97583">:</span><span style="color: #E1E4E8">xs </span></span>
+<span class="line"><span style="color: #E1E4E8">merge </span><span style="color: #85E89D">Nil</span><span style="color: #E1E4E8"> (y</span><span style="color: #F97583">:</span><span style="color: #E1E4E8">ys) </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> y</span><span style="color: #F97583">:</span><span style="color: #E1E4E8">ys</span></span>
+<span class="line"><span style="color: #E1E4E8">merge (x</span><span style="color: #F97583">:</span><span style="color: #E1E4E8">xs) (y</span><span style="color: #F97583">:</span><span style="color: #E1E4E8">ys)</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">|</span><span style="color: #E1E4E8"> x </span><span style="color: #F97583">&#x3C;=</span><span style="color: #E1E4E8"> y </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> x </span><span style="color: #F97583">:</span><span style="color: #E1E4E8">  merge xs (y</span><span style="color: #F97583">:</span><span style="color: #E1E4E8">ys)</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">|</span><span style="color: #E1E4E8"> otherwise </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> y </span><span style="color: #F97583">:</span><span style="color: #E1E4E8"> merge (x</span><span style="color: #F97583">:</span><span style="color: #E1E4E8">xs) ys</span></span></code></pre>
+<p>Note: In this example, we are using PureScript’s built-in <code>sort</code> function for merging the arrays. A real-world implementation would require a more complex merging function that merges two arrays in a way that maintains their order.</p>
+<h2 id="advantages-of-merge-sort">Advantages of Merge Sort</h2>
+<ul>
+<li>Merge sort has a worst-case time complexity of O(n log n), which is one of the best among comparison-based sorting algorithms.</li>
+<li>It is a stable sorting algorithm, which means it maintains the relative order of equal elements.</li>
+</ul>
+<h2 id="disadvantages-of-merge-sort">Disadvantages of Merge Sort</h2>
+<ul>
+<li>Merge sort requires additional space equivalent to the size of the input. This can be a problem for large arrays.</li>
+<li>It involves a good number of data movement, which can affect performance on modern architectures, where read/write operations are slower.</li>
+</ul>
+<h2 id="summary">Summary</h2>
+<p>Merge sort is an efficient, stable, and comparison-based sorting algorithm. While it uses extra space and isn’t the best for small data sets, it scales well with large data sets and has a consistent performance characteristic of O(n log n). It’s a good general-purpose sort and is a good choice for applications where stability is important.</p>
+				</div>
+				
+			</div>
+        </main>
+        <footer class="astro-SZ7XMLTE">
+	&copy; 2022 - 2023 Tao Xiang. All rights reserved.
+</footer>
+	</body></html>
