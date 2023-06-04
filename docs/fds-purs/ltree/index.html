@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- Global Metadata --><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta name="generator" content="Astro v2.5.6">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+<!-- Canonical URL -->
+<link rel="canonical" href="https://example.com/fds-purs/ltree/">
+
+<!-- Primary Meta Tags -->
+<title>Functional Data Structure</title>
+<meta name="title" content="Functional Data Structure">
+<meta name="description" content="Welcome to my website!">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://example.com/fds-purs/ltree/">
+<meta property="og:title" content="Functional Data Structure">
+<meta property="og:description" content="Welcome to my website!">
+<meta property="og:image" content="https://example.com/placeholder-social.jpg">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://example.com/fds-purs/ltree/">
+<meta property="twitter:title" content="Functional Data Structure">
+<meta property="twitter:description" content="Welcome to my website!">
+<meta property="twitter:image" content="https://example.com/placeholder-social.jpg">
+	<link rel="stylesheet" href="/_astro/index.dbe3beaf.css" /></head>
+	<body>
+		<div class="navbar">
+<a class="navbar-brand" href="/" aria-current="page">
+	<h1>Functional Data Structure</h1>
+</a>
+</div>
+		<br>
+		<br>
+        <main>
+            <div class="lesson-container">
+				<div class="lesson">
+					<h1 id="ltree-in-purescript-a-detailed-overview">LTree in PureScript: A Detailed Overview</h1>
+<p>In this article, we will explore the LTree data structure and its implementation in PureScript.</p>
+<h2 id="what-is-an-ltree">What is an LTree?</h2>
+<p>An LTree, also known as Leaf Tree, is a special type of binary tree in which all the values are stored only in the leaf nodes. Non-leaf nodes (also known as internal nodes) do not hold any data but serve the purpose of maintaining the tree’s structure.</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #F97583">data</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">LTree</span><span style="color: #E1E4E8"> a </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #85E89D">Leaf</span><span style="color: #E1E4E8"> a | </span><span style="color: #85E89D">Node</span><span style="color: #E1E4E8"> (</span><span style="color: #B392F0">LTree</span><span style="color: #E1E4E8"> a) (</span><span style="color: #B392F0">LTree</span><span style="color: #E1E4E8"> a)</span></span></code></pre>
+<h2 id="purescript-implementation">PureScript Implementation</h2>
+<h3 id="building-an-ltree">Building an LTree</h3>
+<p>In PureScript, an LTree is defined using a data declaration, indicating it as a data type with a type parameter ‘a’. An LTree of type ‘a’ is either a <code>Leaf</code> containing a value of type ‘a’, or a <code>Node</code> containing two subtrees of type ‘a’.</p>
+<h3 id="operations-on-ltree">Operations on LTree</h3>
+<h4 id="in-order-traversal">In-Order Traversal</h4>
+<p>The <code>inorder</code> function is used for the in-order traversal of an LTree.</p>
+<p>In-order traversal is a method of visiting all the nodes of a tree in a specific order: left child, parent, and then right child.</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #B392F0">inorder</span><span style="color: #F97583">::</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">forall</span><span style="color: #E1E4E8"> a. </span><span style="color: #B392F0">LTree</span><span style="color: #E1E4E8"> a </span><span style="color: #F97583">-></span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">Array</span><span style="color: #E1E4E8"> a</span></span>
+<span class="line"><span style="color: #E1E4E8">inorder (</span><span style="color: #85E89D">Leaf</span><span style="color: #E1E4E8"> x) </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> [x]</span></span>
+<span class="line"><span style="color: #E1E4E8">inorder (</span><span style="color: #85E89D">Node</span><span style="color: #E1E4E8"> l r) </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> inorder l </span><span style="color: #F97583">&#x3C;></span><span style="color: #E1E4E8"> inorder r </span></span></code></pre>
+<p>When applied to an <code>Leaf</code>, the <code>inorder</code> function simply returns an array with a single element, the value of the <code>Leaf</code>.</p>
+<p>When applied to a <code>Node</code>, the <code>inorder</code> function performs an in-order traversal of the tree. It first traverses the left subtree, then the right subtree, and concatenates the results.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>The LTree is a simple yet powerful data structure that exemplifies the principle of separation of concerns: the leaf nodes are responsible for storing data, while the internal nodes are responsible for defining the tree’s structure. The LTree data structure and its corresponding operations are efficiently and elegantly implemented in PureScript, showcasing the language’s strong support for algebraic data types and higher-order functions.</p>
+				</div>
+				
+			</div>
+        </main>
+        <footer class="astro-SZ7XMLTE">
+	&copy; 2022 - 2023 Tao Xiang. All rights reserved.
+</footer>
+	</body></html>

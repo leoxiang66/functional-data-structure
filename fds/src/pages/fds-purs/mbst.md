@@ -8,7 +8,7 @@ In this article, we'll examine the concept of MTree, a specialized tree structur
 
 ## What is an MTree?
 
-An MTree is a type of binary tree where each node carries an additional piece of information: the maximum value found in that subtree. This includes the node's value itself and all values in its left and right child subtrees.
+An MTree is a type of binary tree where each node carries an additional piece of information: the maximum value found in that tree. This includes the node's value itself and all values in its left and right child subtrees.
 
 ```purescript
 data MTree a

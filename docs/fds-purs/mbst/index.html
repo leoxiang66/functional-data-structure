@@ -43,7 +43,7 @@
 					<h1 id="mtree-in-purescript-a-detailed-overview">MTree in PureScript: A Detailed Overview</h1>
 <p>In this article, we’ll examine the concept of MTree, a specialized tree structure, and demonstrate how it’s implemented in PureScript.</p>
 <h2 id="what-is-an-mtree">What is an MTree?</h2>
-<p>An MTree is a type of binary tree where each node carries an additional piece of information: the maximum value found in that subtree. This includes the node’s value itself and all values in its left and right child subtrees.</p>
+<p>An MTree is a type of binary tree where each node carries an additional piece of information: the maximum value found in that tree. This includes the node’s value itself and all values in its left and right child subtrees.</p>
 <pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #F97583">data</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">MTree</span><span style="color: #E1E4E8"> a</span></span>
 <span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #85E89D">Leaf</span><span style="color: #E1E4E8"> </span></span>
 <span class="line"><span style="color: #E1E4E8">  | </span><span style="color: #85E89D">Node</span><span style="color: #E1E4E8"> (</span><span style="color: #B392F0">MTree</span><span style="color: #E1E4E8"> a) a a (</span><span style="color: #B392F0">MTree</span><span style="color: #E1E4E8"> a) </span><span style="color: #6A737D">-- l max value r</span></span></code></pre>
