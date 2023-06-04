@@ -8,10 +8,10 @@ module Algos.Sort
 
 import Prelude
 
-import Data.List (List(..), concat, filter, length, (!!), (:))
+import Data.List (List(..), filter, length, (!!), (:))
 import Data.Maybe (Maybe(..), fromMaybe)
 import Data.Tuple (Tuple(..))
-import Effect.Class.Console (logShow)
+
 
 
 

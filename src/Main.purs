@@ -3,7 +3,7 @@ module Main where
 import Data.List
 import Prelude
 
-import Algos.Search (linearSearch)
+import Algos.Search (binarySearch, linearSearch)
 import Algos.Sort (insort, quickselect, quicksort, sel_sort)
 import Data.Array (toUnfoldable)
 import Effect (Effect)
@@ -32,9 +32,16 @@ main = do
 
   let arr = fromFoldable [12, 25, 8, 10, 32]
   let x = 8
+  let sorted = fromFoldable [1,2,3,4,5]
   let result = linearSearch arr x
   logShow(result)
   logShow (unsafePartial (sel_sort arr))
   logShow (insort arr)
   logShow (quicksort arr)
   logShow (quickselect arr 1)
+  logShow (binarySearch sorted 4)
+  logShow (binarySearch sorted 1)
+  logShow (binarySearch sorted 2)
+  logShow (binarySearch sorted 3)
+  logShow (binarySearch sorted 5)
+  logShow (binarySearch sorted 7)
