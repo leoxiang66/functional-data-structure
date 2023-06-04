@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- Global Metadata --><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta name="generator" content="Astro v2.5.6">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+<!-- Canonical URL -->
+<link rel="canonical" href="https://example.com/fds-purs/bubblesort/">
+
+<!-- Primary Meta Tags -->
+<title>Functional Data Structure</title>
+<meta name="title" content="Functional Data Structure">
+<meta name="description" content="Welcome to my website!">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://example.com/fds-purs/bubblesort/">
+<meta property="og:title" content="Functional Data Structure">
+<meta property="og:description" content="Welcome to my website!">
+<meta property="og:image" content="https://example.com/placeholder-social.jpg">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://example.com/fds-purs/bubblesort/">
+<meta property="twitter:title" content="Functional Data Structure">
+<meta property="twitter:description" content="Welcome to my website!">
+<meta property="twitter:image" content="https://example.com/placeholder-social.jpg">
+	<link rel="stylesheet" href="/_astro/index.dbe3beaf.css" /></head>
+	<body>
+		<div class="navbar">
+<a class="navbar-brand" href="/" aria-current="page">
+	<h1>Functional Data Structure</h1>
+</a>
+</div>
+		<br>
+		<br>
+        <main>
+            <div class="lesson-container">
+				<div class="lesson">
+					<h1 id="bubble-sort-a-comprehensive-guide">Bubble Sort: A Comprehensive Guide</h1>
+<p>Bubble Sort is one of the simplest sorting algorithms that works by repeatedly swapping the adjacent elements if they are in the wrong order.</p>
+<h2 id="algorithm">Algorithm</h2>
+<p>The Bubble Sort algorithm works by repeatedly scanning through the list to be sorted, comparing each pair of adjacent items, and swapping them if they are in the wrong order. This pass through the list is repeated until no swaps are needed, indicating that the list is sorted.</p>
+<p>The algorithm gets its name from the way smaller or larger elements “bubble” to the top of the list.</p>
+<h2 id="pseudocode">Pseudocode</h2>
+<p>Here’s a simple pseudocode representation of the bubble sort algorithm:</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #e1e4e8">function bubbleSort(arr)</span></span>
+<span class="line"><span style="color: #e1e4e8">    n := length(arr)</span></span>
+<span class="line"><span style="color: #e1e4e8">    for i from 0 to n-1 do:</span></span>
+<span class="line"><span style="color: #e1e4e8">        for j from 0 to n-i-1 do:</span></span>
+<span class="line"><span style="color: #e1e4e8">            if arr[j] > arr[j+1] then</span></span>
+<span class="line"><span style="color: #e1e4e8">                swap arr[j] and arr[j+1]</span></span></code></pre>
+<p>In this pseudocode:</p>
+<ul>
+<li><code>arr</code> represents the array to be sorted.</li>
+<li><code>n</code> is the length of the array.</li>
+<li>The outer loop (i) runs through the entire array.</li>
+<li>The inner loop (j) runs from the start of the array to the end of the unsorted section of the array (as after each complete pass, the largest element is placed in its correct position).</li>
+</ul>
+<h2 id="implementation-in-purescript">Implementation in PureScript</h2>
+<p>Here is how the algorithm can be implemented in PureScript:</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #B392F0">bb_1</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">::</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">forall</span><span style="color: #E1E4E8"> a. </span><span style="color: #B392F0">Ord</span><span style="color: #E1E4E8"> a </span><span style="color: #F97583">=></span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">List</span><span style="color: #E1E4E8"> a </span><span style="color: #F97583">-></span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">List</span><span style="color: #E1E4E8"> a </span></span>
+<span class="line"><span style="color: #E1E4E8">bb_1 (x</span><span style="color: #F97583">:</span><span style="color: #E1E4E8">y</span><span style="color: #F97583">:</span><span style="color: #E1E4E8">ys)</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">|</span><span style="color: #E1E4E8"> x </span><span style="color: #F97583">&#x3C;=</span><span style="color: #E1E4E8"> y </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> x </span><span style="color: #F97583">:</span><span style="color: #E1E4E8"> (bb_1 (y</span><span style="color: #F97583">:</span><span style="color: #E1E4E8">ys))</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">|</span><span style="color: #E1E4E8"> otherwise </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> y </span><span style="color: #F97583">:</span><span style="color: #E1E4E8"> (bb_1 (x</span><span style="color: #F97583">:</span><span style="color: #E1E4E8">ys))</span></span>
+<span class="line"><span style="color: #E1E4E8">bb_1 x </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> x</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #B392F0">bubbleSort</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">::</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">forall</span><span style="color: #E1E4E8"> a.</span><span style="color: #B392F0">Ord</span><span style="color: #E1E4E8"> a </span><span style="color: #F97583">=></span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">List</span><span style="color: #E1E4E8"> a </span><span style="color: #F97583">-></span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">List</span><span style="color: #E1E4E8"> a</span></span>
+<span class="line"><span style="color: #E1E4E8">bubbleSort </span><span style="color: #85E89D">Nil</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #85E89D">Nil</span></span>
+<span class="line"><span style="color: #E1E4E8">bubbleSort (x</span><span style="color: #F97583">:</span><span style="color: #E1E4E8">xs) </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> bb_1 (x</span><span style="color: #F97583">:</span><span style="color: #E1E4E8">(bubbleSort xs))</span></span></code></pre>
+<p>Note: In this simplified example, we use PureScript’s built-in <code>sort</code> function from the <code>Data.Array</code> module. To implement bubble sort from scratch, you would need to implement the logic for iterating over the array, comparing adjacent elements, and swapping elements as necessary.</p>
+<h2 id="advantages-of-bubble-sort">Advantages of Bubble Sort</h2>
+<ul>
+<li>Bubble Sort is simple and easy to understand.</li>
+<li>It is useful for smaller data sets, but not on larger lists.</li>
+<li>It can be practical if the input is usually in sorted order but may occasionally have some out-of-order elements nearly in position.</li>
+</ul>
+<h2 id="disadvantages-of-bubble-sort">Disadvantages of Bubble Sort</h2>
+<ul>
+<li>Bubble sort has a worst-case and average time complexity of O(n²), where n is the number of items being sorted. Hence, it is not suitable for large data sets.</li>
+<li>There are many sorting algorithms that are much more efficient than bubble sort, like quicksort, mergesort, and heapsort.</li>
+</ul>
+<h2 id="summary">Summary</h2>
+<p>Bubble sort, despite its simplicity, has limited efficiency and is therefore not used in practice for sorting large arrays. However, it can be used for teaching purposes due to its simplicity, and to introduce the concept of algorithm efficiency.</p>
+				</div>
+				
+			</div>
+        </main>
+        <footer class="astro-SZ7XMLTE">
+	&copy; 2022 - 2023 Tao Xiang. All rights reserved.
+</footer>
+	</body></html>

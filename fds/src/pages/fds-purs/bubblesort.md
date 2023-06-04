@@ -37,15 +37,15 @@ In this pseudocode:
 Here is how the algorithm can be implemented in PureScript:
 
 ```purescript
-module BubbleSort where
+bb_1 :: forall a. Ord a => List a -> List a 
+bb_1 (x:y:ys)
+  | x <= y = x : (bb_1 (y:ys))
+  | otherwise = y : (bb_1 (x:ys))
+bb_1 x = x
 
-import Prelude
-import Data.Array (sort)
-
-bubbleSort :: forall a. Ord a => Array a -> Array a
-bubbleSort arr = case arr of
-  [] -> []
-  _  -> sort arr
+bubbleSort :: forall a.Ord a => List a -> List a
+bubbleSort Nil = Nil
+bubbleSort (x:xs) = bb_1 (x:(bubbleSort xs))
 ```
 
 Note: In this simplified example, we use PureScript's built-in `sort` function from the `Data.Array` module. To implement bubble sort from scratch, you would need to implement the logic for iterating over the array, comparing adjacent elements, and swapping elements as necessary.
