@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- Global Metadata --><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta name="generator" content="Astro v2.5.6">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+<!-- Canonical URL -->
+<link rel="canonical" href="https://example.com/fds-purs/set/">
+
+<!-- Primary Meta Tags -->
+<title>Functional Data Structure</title>
+<meta name="title" content="Functional Data Structure">
+<meta name="description" content="Welcome to my website!">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://example.com/fds-purs/set/">
+<meta property="og:title" content="Functional Data Structure">
+<meta property="og:description" content="Welcome to my website!">
+<meta property="og:image" content="https://example.com/placeholder-social.jpg">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://example.com/fds-purs/set/">
+<meta property="twitter:title" content="Functional Data Structure">
+<meta property="twitter:description" content="Welcome to my website!">
+<meta property="twitter:image" content="https://example.com/placeholder-social.jpg">
+	<link rel="stylesheet" href="/_astro/index.dbe3beaf.css" /></head>
+	<body>
+		<div class="navbar">
+<a class="navbar-brand" href="/" aria-current="page">
+	<h1>Functional Data Structure</h1>
+</a>
+</div>
+		<br>
+		<br>
+        <main>
+            <div class="lesson-container">
+				<div class="lesson">
+					<h1 id="sets-in-purescript-a-comprehensive-guide">Sets in PureScript: A Comprehensive Guide</h1>
+<p>In this article, we delve into the concept of Sets, their properties, and how to implement them in PureScript.</p>
+<h2 id="what-is-a-set">What is a Set?</h2>
+<p>In mathematics, a set is a collection of distinct elements. Each element can only occur once in a set. Operations such as union, intersection, and difference are commonly performed on sets.</p>
+<h2 id="purescript-implementation">PureScript Implementation</h2>
+<p>In PureScript, a <code>Set</code> is implemented as an array that enforces the property of containing unique elements. This property is enforced by the <code>insert</code> function, which only adds an element to the set if it does not already exist in the set.</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #F97583">type</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">Set</span><span style="color: #E1E4E8"> a </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">Array</span><span style="color: #E1E4E8"> a</span></span></code></pre>
+<h3 id="creating-a-set">Creating a Set</h3>
+<p>A new empty set can be created using the <code>empty</code> function, which simply returns an empty array.</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #B392F0">empty</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">::</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">forall</span><span style="color: #E1E4E8"> a. </span><span style="color: #B392F0">Set</span><span style="color: #E1E4E8"> a</span></span>
+<span class="line"><span style="color: #E1E4E8">empty </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> []</span></span></code></pre>
+<p>A set can also be created from an array of elements using the <code>make</code> function, which folds over the array, inserting each element into an initially empty set.</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #B392F0">make</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">::</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">forall</span><span style="color: #E1E4E8"> a. </span><span style="color: #B392F0">Eq</span><span style="color: #E1E4E8"> a </span><span style="color: #F97583">=></span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">Array</span><span style="color: #E1E4E8"> a </span><span style="color: #F97583">-></span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">Set</span><span style="color: #E1E4E8"> a</span></span>
+<span class="line"><span style="color: #E1E4E8">make arr </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> foldl insert arr empty</span></span></code></pre>
+<h3 id="adding-elements">Adding Elements</h3>
+<p>Elements can be added to a set using the <code>insert</code> function. It first checks whether the element is already present in the set, and if not, it adds it.</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #B392F0">insert</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">::</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">forall</span><span style="color: #E1E4E8"> a. </span><span style="color: #B392F0">Eq</span><span style="color: #E1E4E8"> a </span><span style="color: #F97583">=></span><span style="color: #E1E4E8">  </span><span style="color: #B392F0">Set</span><span style="color: #E1E4E8"> a </span><span style="color: #F97583">-></span><span style="color: #E1E4E8"> a  </span><span style="color: #F97583">-></span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">Set</span><span style="color: #E1E4E8"> a</span></span>
+<span class="line"><span style="color: #E1E4E8">insert set item </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">if</span><span style="color: #E1E4E8"> item </span><span style="color: #F97583">`Array.elem`</span><span style="color: #E1E4E8"> set </span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #F97583">then</span><span style="color: #E1E4E8"> set </span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #F97583">else</span><span style="color: #E1E4E8"> </span><span style="color: #85E89D">Array</span><span style="color: #F97583">.</span><span style="color: #E1E4E8">snoc set item</span></span></code></pre>
+<h3 id="checking-membership">Checking Membership</h3>
+<p>We can check if an element belongs to a set using the <code>contains</code> function, which returns true if the element is in the set and false otherwise.</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #B392F0">contains</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">::</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">forall</span><span style="color: #E1E4E8"> a. </span><span style="color: #B392F0">Eq</span><span style="color: #E1E4E8"> a </span><span style="color: #F97583">=></span><span style="color: #E1E4E8"> a </span><span style="color: #F97583">-></span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">Set</span><span style="color: #E1E4E8"> a </span><span style="color: #F97583">-></span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">Boolean</span></span>
+<span class="line"><span style="color: #E1E4E8">contains item set </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> item </span><span style="color: #F97583">`Array.elem`</span><span style="color: #E1E4E8"> set</span></span></code></pre>
+<h3 id="removing-elements">Removing Elements</h3>
+<p>Elements can be removed from a set using the <code>remove</code> function, which filters out the specified element from the set.</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #B392F0">remove</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">::</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">forall</span><span style="color: #E1E4E8"> a. </span><span style="color: #B392F0">Eq</span><span style="color: #E1E4E8"> a </span><span style="color: #F97583">=></span><span style="color: #E1E4E8"> a </span><span style="color: #F97583">-></span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">Set</span><span style="color: #E1E4E8"> a </span><span style="color: #F97583">-></span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">Set</span><span style="color: #E1E4E8"> a</span></span>
+<span class="line"><span style="color: #E1E4E8">remove item set </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #85E89D">Array</span><span style="color: #F97583">.</span><span style="color: #E1E4E8">filter (notEq item) set</span></span></code></pre>
+<h3 id="set-union">Set Union</h3>
+<p>The union of two sets can be found using the <code>union</code> function, which folds over the first set, inserting each element into the second set.</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #B392F0">union</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">::</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">forall</span><span style="color: #E1E4E8"> a. </span><span style="color: #B392F0">Eq</span><span style="color: #E1E4E8"> a </span><span style="color: #F97583">=></span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">Set</span><span style="color: #E1E4E8"> a </span><span style="color: #F97583">-></span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">Set</span><span style="color: #E1E4E8"> a </span><span style="color: #F97583">-></span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">Set</span><span style="color: #E1E4E8"> a</span></span>
+<span class="line"><span style="color: #E1E4E8">union set1 set2 </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> foldl insert set1 set2</span></span></code></pre>
+<h3 id="checking-a-predicate-on-all-elements">Checking a Predicate on all Elements</h3>
+<p>We can check if a predicate holds for all elements in a set using the <code>all</code> function.</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #B392F0">all</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">::</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">forall</span><span style="color: #E1E4E8"> a. </span><span style="color: #B392F0">Eq</span><span style="color: #E1E4E8"> a </span><span style="color: #F97583">=></span><span style="color: #E1E4E8"> (a </span><span style="color: #F97583">-></span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">Boolean</span><span style="color: #E1E4E8">) </span><span style="color: #F97583">-></span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">Set</span><span style="color: #E1E4E8"> a </span><span style="color: #F97583">-></span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">Boolean</span></span>
+<span class="line"><span style="color: #E1E4E8">all pred set </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> foldl (</span><span style="color: #F97583">\</span><span style="color: #E1E4E8">acc x </span><span style="color: #F97583">-></span><span style="color: #E1E4E8"> acc </span><span style="color: #F97583">&#x26;&#x26;</span><span style="color: #E1E4E8"> (pred x)) </span><span style="color: #79B8FF">true</span><span style="color: #E1E4E8"> set </span></span></code></pre>
+<h2 id="conclusion">Conclusion</h2>
+<p>Sets are powerful constructs that allow us to deal with unique collections of elements. PureScript provides an easy and functional way to work with them while ensuring type safety.</p>
+				</div>
+				
+			</div>
+        </main>
+        <footer class="astro-SZ7XMLTE">
+	&copy; 2022 - 2023 Tao Xiang. All rights reserved.
+</footer>
+	</body></html>
