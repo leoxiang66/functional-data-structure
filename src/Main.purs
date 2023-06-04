@@ -4,7 +4,7 @@ import Data.List
 import Prelude
 
 import Algos.Search (linearSearch)
-import Algos.Sort (insort, sel_sort)
+import Algos.Sort (insort, quicksort, sel_sort)
 import Data.Array (toUnfoldable)
 import Effect (Effect)
 import Effect.Console (logShow)
@@ -36,3 +36,4 @@ main = do
   logShow(result)
   logShow (unsafePartial (sel_sort arr))
   logShow (insort arr)
+  logShow (quicksort arr)

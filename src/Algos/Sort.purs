@@ -1,15 +1,16 @@
 module Algos.Sort
   ( insort
   , quickselect
+  , quicksort
   , sel_sort
   )
   where
 
 import Prelude
 
-import Data.List (List(..), (:), filter, length)
+import Data.List (List(..), concat, filter, length, (!!), (:))
+import Data.Maybe (Maybe(..), fromMaybe)
 import Data.Tuple (Tuple(..))
-import Data.Maybe (Maybe(..))
 
 
 
@@ -52,3 +53,18 @@ quickselect (x : xs) k =
     if k < length xs1 then quickselect xs1 k
     else if k == length xs1 then Just x
     else quickselect xs2 (k - length xs1 - 1)
+
+
+
+quicksort :: forall a. Ord a => List a -> List a
+quicksort Nil = Nil
+quicksort (x:xs) = 
+   let 
+      pivot = fromMaybe x (xs !! (length xs `div` 2))
+      left = filter (_ < pivot) xs
+      middle = filter (_ == pivot) xs
+      right = filter (_ > pivot) xs
+    in
+      concat [quicksort left, middle, quicksort right]
+      
+
