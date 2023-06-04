@@ -65,48 +65,21 @@ The worst case for insertion sort will occur when the input list is in decreasin
 
 ## Code Implementation
 
-```java
+```
+-- insert an element while keeping the list ordered
+insert_ :: forall a. Ord a => a -> List a  -> List a 
+insert_ x Nil = x:Nil
+insert_ x (y:ys) 
+  | x <= y = (x:y:ys)
+  | otherwise = (y: (insert_ x ys))
 
-// Java program for implementation of Insertion Sort
-public class InsertionSort {
-    public static void insertionSort(int[] input) {
-        for (int i = 1; i < input.length; i++) {
-            int j = i - 1;
-            int temp = input[i];
-            for (; j >= 0 && input[j] > temp; j--) {
-                input[j + 1] = input[j];
-            }
-            input[j + 1] = temp;
-        }
-    }
 
-    public static void main(String[] args) {
-        int[] input = {  1, 5, 4, 2, 3  };
-        insertionSort(input);
-        for (int j : input) {
-            System.out.print(j + " ");
-        }
-    }
-}
+insort :: forall a. Ord a => List a -> List a
+insort Nil = Nil
+insort (x:xs) = insert_ x (insort xs)
 ```
 
->
->
->Explanation of the example  arr [] = {1 , 5 , 4 , 2 , 3 }
->
->Step 1 : No element on the left side of 1. so, no change in position.
->
->Step 2 : As 1 < 5. so no change in position.
->
->Step 3 : As 5 > 4. 4 and 5 will swap. now 1 < 4. so no change in postion.
->
->Step 4 : As 5 > 2. 2 and 5 will swap. now 4 > 2 so 2 and 4 will swap. now 1 < 2, so no change in position.
->
->Step 5: As  5 > 3. 3 and 5 will swap. now 4 > 3 so 3 and 4 will swap. now 2 < 3, so no change in position. 
 
-Now our array is sorted.
-
-you can visualize this at [hackerearth](https://www.hackerearth.com/practice/algorithms/sorting/insertion-sort/visualize/) 
 
 ## Advantages
 
