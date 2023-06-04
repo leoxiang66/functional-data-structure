@@ -12,10 +12,19 @@ QuickSort works by selecting a 'pivot' element from the array and partitioning t
 
 ## The Algorithm
 
-Here's a simplified implementation of QuickSort in Python:
+Here's a simplified implementation of QuickSort in Purescript:
 
 ```
-
+quicksort :: forall a. Ord a => List a -> List a
+quicksort Nil = Nil
+quicksort (x:xs) = 
+   let 
+      pivot = fromMaybe x (xs !! (length xs `div` 2))
+      left = filter (_ < pivot) (x:xs)
+      middle = filter (_ == pivot) (x:xs)
+      right = filter (_ > pivot) (x:xs)
+    in
+         quicksort left <> middle <> quicksort right
 ```
 
 This version of QuickSort uses the "list comprehension" feature in Python to create the left, middle, and right arrays. It uses the middle element as the pivot.
