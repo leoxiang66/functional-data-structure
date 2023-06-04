@@ -65,7 +65,7 @@ The worst case for insertion sort will occur when the input list is in decreasin
 
 ## Code Implementation
 
-```
+```purescript
 -- insert an element while keeping the list ordered
 insert_ :: forall a. Ord a => a -> List a  -> List a 
 insert_ x Nil = x:Nil

@@ -86,17 +86,17 @@
 <p>The average case and the worst case have the same time complexity. Try to think why is this happening.</p>
 </blockquote>
 <h2 id="code-implementation">Code Implementation</h2>
-<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #e1e4e8">-- insert an element while keeping the list ordered</span></span>
-<span class="line"><span style="color: #e1e4e8">insert_ :: forall a. Ord a => a -> List a  -> List a </span></span>
-<span class="line"><span style="color: #e1e4e8">insert_ x Nil = x:Nil</span></span>
-<span class="line"><span style="color: #e1e4e8">insert_ x (y:ys) </span></span>
-<span class="line"><span style="color: #e1e4e8">  | x &#x3C;= y = (x:y:ys)</span></span>
-<span class="line"><span style="color: #e1e4e8">  | otherwise = (y: (insert_ x ys))</span></span>
-<span class="line"><span style="color: #e1e4e8"></span></span>
-<span class="line"><span style="color: #e1e4e8"></span></span>
-<span class="line"><span style="color: #e1e4e8">insort :: forall a. Ord a => List a -> List a</span></span>
-<span class="line"><span style="color: #e1e4e8">insort Nil = Nil</span></span>
-<span class="line"><span style="color: #e1e4e8">insort (x:xs) = insert_ x (insort xs)</span></span></code></pre>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #6A737D">-- insert an element while keeping the list ordered</span></span>
+<span class="line"><span style="color: #B392F0">insert_</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">::</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">forall</span><span style="color: #E1E4E8"> a. </span><span style="color: #B392F0">Ord</span><span style="color: #E1E4E8"> a </span><span style="color: #F97583">=></span><span style="color: #E1E4E8"> a </span><span style="color: #F97583">-></span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">List</span><span style="color: #E1E4E8"> a  </span><span style="color: #F97583">-></span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">List</span><span style="color: #E1E4E8"> a </span></span>
+<span class="line"><span style="color: #E1E4E8">insert_ x </span><span style="color: #85E89D">Nil</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> x</span><span style="color: #F97583">:</span><span style="color: #85E89D">Nil</span></span>
+<span class="line"><span style="color: #E1E4E8">insert_ x (y</span><span style="color: #F97583">:</span><span style="color: #E1E4E8">ys) </span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">|</span><span style="color: #E1E4E8"> x </span><span style="color: #F97583">&#x3C;=</span><span style="color: #E1E4E8"> y </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> (x</span><span style="color: #F97583">:</span><span style="color: #E1E4E8">y</span><span style="color: #F97583">:</span><span style="color: #E1E4E8">ys)</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">|</span><span style="color: #E1E4E8"> otherwise </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> (y</span><span style="color: #F97583">:</span><span style="color: #E1E4E8"> (insert_ x ys))</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color: #B392F0">insort</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">::</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">forall</span><span style="color: #E1E4E8"> a. </span><span style="color: #B392F0">Ord</span><span style="color: #E1E4E8"> a </span><span style="color: #F97583">=></span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">List</span><span style="color: #E1E4E8"> a </span><span style="color: #F97583">-></span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">List</span><span style="color: #E1E4E8"> a</span></span>
+<span class="line"><span style="color: #E1E4E8">insort </span><span style="color: #85E89D">Nil</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #85E89D">Nil</span></span>
+<span class="line"><span style="color: #E1E4E8">insort (x</span><span style="color: #F97583">:</span><span style="color: #E1E4E8">xs) </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> insert_ x (insort xs)</span></span></code></pre>
 <h2 id="advantages">Advantages</h2>
 <ul>
 <li>Simple and easy to understand implementation</li>

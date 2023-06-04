@@ -71,7 +71,7 @@ Now, the array is completely sorted.
 
 ## Implementation of Selection Sort
 
-```Purescript
+```purescript
 module Algos.Sort
   ( sel_sort
   )

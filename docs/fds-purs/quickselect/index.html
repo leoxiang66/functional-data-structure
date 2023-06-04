@@ -47,22 +47,22 @@
 <p>However, unlike QuickSort, which recursively processes both sub-lists, QuickSelect only processes the sub-list that the k-th element is in. This is what gives QuickSelect its average time complexity of O(n), making it faster than sorting the list and picking the k-th element (which would take O(n log n) time).</p>
 <h2 id="the-algorithm">The Algorithm</h2>
 <p>Here is a simplified implementation of QuickSelect in Purescript:</p>
-<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #e1e4e8">module QuickSelect where</span></span>
-<span class="line"><span style="color: #e1e4e8"></span></span>
-<span class="line"><span style="color: #e1e4e8">import Prelude</span></span>
-<span class="line"><span style="color: #e1e4e8">import Data.List (List(..), filter, length)</span></span>
-<span class="line"><span style="color: #e1e4e8">import Data.Maybe (Maybe(..))</span></span>
-<span class="line"><span style="color: #e1e4e8"></span></span>
-<span class="line"><span style="color: #e1e4e8">quickselect :: forall a. Ord a => List a -> Int -> Maybe a</span></span>
-<span class="line"><span style="color: #e1e4e8">quickselect Nil _ = Nothing</span></span>
-<span class="line"><span style="color: #e1e4e8">quickselect (x : xs) k =</span></span>
-<span class="line"><span style="color: #e1e4e8">  let</span></span>
-<span class="line"><span style="color: #e1e4e8">    xs1 = filter (_ &#x3C; x) xs</span></span>
-<span class="line"><span style="color: #e1e4e8">    xs2 = filter (_ >= x) xs</span></span>
-<span class="line"><span style="color: #e1e4e8">  in</span></span>
-<span class="line"><span style="color: #e1e4e8">    if k &#x3C; length xs1 then quickselect xs1 k</span></span>
-<span class="line"><span style="color: #e1e4e8">    else if k == length xs1 then Just x</span></span>
-<span class="line"><span style="color: #e1e4e8">    else quickselect xs2 (k - length xs1 - 1)</span></span></code></pre>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #F97583">module</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">QuickSelect</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">where</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #F97583">import</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">Prelude</span></span>
+<span class="line"><span style="color: #F97583">import</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">Data.List</span><span style="color: #E1E4E8"> (</span><span style="color: #B392F0">List(..)</span><span style="color: #E1E4E8">, </span><span style="color: #B392F0">filter</span><span style="color: #E1E4E8">, </span><span style="color: #B392F0">length</span><span style="color: #E1E4E8">)</span></span>
+<span class="line"><span style="color: #F97583">import</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">Data.Maybe</span><span style="color: #E1E4E8"> (</span><span style="color: #B392F0">Maybe(..)</span><span style="color: #E1E4E8">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #B392F0">quickselect</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">::</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">forall</span><span style="color: #E1E4E8"> a. </span><span style="color: #B392F0">Ord</span><span style="color: #E1E4E8"> a </span><span style="color: #F97583">=></span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">List</span><span style="color: #E1E4E8"> a </span><span style="color: #F97583">-></span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">Int</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">-></span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">Maybe</span><span style="color: #E1E4E8"> a</span></span>
+<span class="line"><span style="color: #E1E4E8">quickselect </span><span style="color: #85E89D">Nil</span><span style="color: #E1E4E8"> _ </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #85E89D">Nothing</span></span>
+<span class="line"><span style="color: #E1E4E8">quickselect (x </span><span style="color: #F97583">:</span><span style="color: #E1E4E8"> xs) k </span><span style="color: #F97583">=</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">let</span></span>
+<span class="line"><span style="color: #E1E4E8">    xs1 </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> filter (_ </span><span style="color: #F97583">&#x3C;</span><span style="color: #E1E4E8"> x) xs</span></span>
+<span class="line"><span style="color: #E1E4E8">    xs2 </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> filter (_ </span><span style="color: #F97583">>=</span><span style="color: #E1E4E8"> x) xs</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">in</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #F97583">if</span><span style="color: #E1E4E8"> k </span><span style="color: #F97583">&#x3C;</span><span style="color: #E1E4E8"> length xs1 </span><span style="color: #F97583">then</span><span style="color: #E1E4E8"> quickselect xs1 k</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #F97583">else</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">if</span><span style="color: #E1E4E8"> k </span><span style="color: #F97583">==</span><span style="color: #E1E4E8"> length xs1 </span><span style="color: #F97583">then</span><span style="color: #E1E4E8"> </span><span style="color: #85E89D">Just</span><span style="color: #E1E4E8"> x</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #F97583">else</span><span style="color: #E1E4E8"> quickselect xs2 (k </span><span style="color: #F97583">-</span><span style="color: #E1E4E8"> length xs1 </span><span style="color: #F97583">-</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">1</span><span style="color: #E1E4E8">)</span></span></code></pre>
 <p>This version of QuickSelect uses the “list comprehension” feature in Python to create the left, middle, and right lists. It assumes a function <code>selectPivot</code> is available to choose a pivot from the list.</p>
 <h2 id="complexity-analysis">Complexity Analysis</h2>
 <p>The average time complexity of QuickSelect is O(n), but its worst-case time complexity is O(n^2). The worst-case scenario occurs when the pivot chosen is the smallest or largest element in the list, leading to very unbalanced partitions.</p>

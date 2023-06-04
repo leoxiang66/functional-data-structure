@@ -76,27 +76,27 @@
 <pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #e1e4e8">8 12 17 25 29 32 40</span></span></code></pre>
 <p>Now, the array is completely sorted.</p>
 <h2 id="implementation-of-selection-sort">Implementation of Selection Sort</h2>
-<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #e1e4e8">module Algos.Sort</span></span>
-<span class="line"><span style="color: #e1e4e8">  ( sel_sort</span></span>
-<span class="line"><span style="color: #e1e4e8">  )</span></span>
-<span class="line"><span style="color: #e1e4e8">  where</span></span>
-<span class="line"><span style="color: #e1e4e8"></span></span>
-<span class="line"><span style="color: #e1e4e8">import Prelude</span></span>
-<span class="line"><span style="color: #e1e4e8"></span></span>
-<span class="line"><span style="color: #e1e4e8">import Data.List (List(..),(:))</span></span>
-<span class="line"><span style="color: #e1e4e8">import Data.Tuple (Tuple(..))</span></span>
-<span class="line"><span style="color: #e1e4e8"></span></span>
-<span class="line"><span style="color: #e1e4e8"></span></span>
-<span class="line"><span style="color: #e1e4e8">findMin :: forall a. Ord a => Partial => List a -> Tuple a (List a)</span></span>
-<span class="line"><span style="color: #e1e4e8">findMin (x : Nil) = Tuple x Nil</span></span>
-<span class="line"><span style="color: #e1e4e8">findMin (x : xs) =  let Tuple y ys = findMin xs </span></span>
-<span class="line"><span style="color: #e1e4e8">    in if x &#x3C; y then Tuple x xs else Tuple y (x : ys)</span></span>
-<span class="line"><span style="color: #e1e4e8"></span></span>
-<span class="line"><span style="color: #e1e4e8"></span></span>
-<span class="line"><span style="color: #e1e4e8">sel_sort :: forall a. Ord a =>Partial => List a -> List a </span></span>
-<span class="line"><span style="color: #e1e4e8">sel_sort Nil = Nil</span></span>
-<span class="line"><span style="color: #e1e4e8">sel_sort xs = let Tuple m ms = findMin xs in (m : (sel_sort ms)) </span></span>
-<span class="line"><span style="color: #e1e4e8"></span></span></code></pre>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #F97583">module</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">Algos.Sort</span></span>
+<span class="line"><span style="color: #E1E4E8">  ( </span><span style="color: #B392F0">sel_sort</span></span>
+<span class="line"><span style="color: #E1E4E8">  )</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">where</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #F97583">import</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">Prelude</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #F97583">import</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">Data.List</span><span style="color: #E1E4E8"> (</span><span style="color: #B392F0">List(..)</span><span style="color: #E1E4E8">,</span><span style="color: #B392F0">(:)</span><span style="color: #E1E4E8">)</span></span>
+<span class="line"><span style="color: #F97583">import</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">Data.Tuple</span><span style="color: #E1E4E8"> (</span><span style="color: #B392F0">Tuple(..)</span><span style="color: #E1E4E8">)</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color: #B392F0">findMin</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">::</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">forall</span><span style="color: #E1E4E8"> a. </span><span style="color: #B392F0">Ord</span><span style="color: #E1E4E8"> a </span><span style="color: #F97583">=></span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">Partial</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=></span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">List</span><span style="color: #E1E4E8"> a </span><span style="color: #F97583">-></span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">Tuple</span><span style="color: #E1E4E8"> a (</span><span style="color: #B392F0">List</span><span style="color: #E1E4E8"> a)</span></span>
+<span class="line"><span style="color: #E1E4E8">findMin (x </span><span style="color: #F97583">:</span><span style="color: #E1E4E8"> </span><span style="color: #85E89D">Nil</span><span style="color: #E1E4E8">) </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #85E89D">Tuple</span><span style="color: #E1E4E8"> x </span><span style="color: #85E89D">Nil</span></span>
+<span class="line"><span style="color: #E1E4E8">findMin (x </span><span style="color: #F97583">:</span><span style="color: #E1E4E8"> xs) </span><span style="color: #F97583">=</span><span style="color: #E1E4E8">  </span><span style="color: #F97583">let</span><span style="color: #E1E4E8"> </span><span style="color: #85E89D">Tuple</span><span style="color: #E1E4E8"> y ys </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> findMin xs </span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #F97583">in</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">if</span><span style="color: #E1E4E8"> x </span><span style="color: #F97583">&#x3C;</span><span style="color: #E1E4E8"> y </span><span style="color: #F97583">then</span><span style="color: #E1E4E8"> </span><span style="color: #85E89D">Tuple</span><span style="color: #E1E4E8"> x xs </span><span style="color: #F97583">else</span><span style="color: #E1E4E8"> </span><span style="color: #85E89D">Tuple</span><span style="color: #E1E4E8"> y (x </span><span style="color: #F97583">:</span><span style="color: #E1E4E8"> ys)</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color: #B392F0">sel_sort</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">::</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">forall</span><span style="color: #E1E4E8"> a. </span><span style="color: #B392F0">Ord</span><span style="color: #E1E4E8"> a </span><span style="color: #F97583">=></span><span style="color: #B392F0">Partial</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=></span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">List</span><span style="color: #E1E4E8"> a </span><span style="color: #F97583">-></span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">List</span><span style="color: #E1E4E8"> a </span></span>
+<span class="line"><span style="color: #E1E4E8">sel_sort </span><span style="color: #85E89D">Nil</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #85E89D">Nil</span></span>
+<span class="line"><span style="color: #E1E4E8">sel_sort xs </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">let</span><span style="color: #E1E4E8"> </span><span style="color: #85E89D">Tuple</span><span style="color: #E1E4E8"> m ms </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> findMin xs </span><span style="color: #F97583">in</span><span style="color: #E1E4E8"> (m </span><span style="color: #F97583">:</span><span style="color: #E1E4E8"> (sel_sort ms)) </span></span>
+<span class="line"></span></code></pre>
 <h2 id="time-complexity-and-space-complexity">Time Complexity and Space Complexity</h2>
 <h3 id="time-complexity">Time Complexity</h3>
 <ul>

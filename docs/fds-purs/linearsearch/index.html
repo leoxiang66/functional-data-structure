@@ -69,28 +69,26 @@
 <li><strong>Space Complexity :</strong> O(1)</li>
 </ul>
 <h2 id="code"><strong>Code :</strong></h2>
-<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #F97583">module</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">Algos</span><span style="color: #E1E4E8">.Search</span></span>
-<span class="line"><span style="color: #E1E4E8">  ( linearSearch</span></span>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #F97583">module</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">Algos.Search</span></span>
+<span class="line"><span style="color: #E1E4E8">  ( </span><span style="color: #B392F0">linearSearch</span></span>
 <span class="line"><span style="color: #E1E4E8">  )</span></span>
-<span class="line"><span style="color: #E1E4E8">  where</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">where</span></span>
 <span class="line"></span>
-<span class="line"><span style="color: #E1E4E8">import Prelude</span></span>
-<span class="line"><span style="color: #E1E4E8">import Data.List (List(..))</span></span>
+<span class="line"><span style="color: #F97583">import</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">Prelude</span></span>
+<span class="line"><span style="color: #F97583">import</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">Data.List</span><span style="color: #E1E4E8"> (</span><span style="color: #B392F0">List(..)</span><span style="color: #E1E4E8">)</span></span>
 <span class="line"></span>
 <span class="line"></span>
-<span class="line"><span style="color: #E1E4E8">-- | Recursive linear search.</span></span>
-<span class="line"><span style="color: #E1E4E8">linearSearchRec :: forall a. Eq a => List a -> a -> Int -> Int</span></span>
-<span class="line"><span style="color: #E1E4E8">linearSearchRec Nil _ _ = -1</span></span>
-<span class="line"><span style="color: #E1E4E8">linearSearchRec (Cons x xs) val n </span></span>
-<span class="line"><span style="color: #E1E4E8">  | x == val  = n</span></span>
-<span class="line"><span style="color: #E1E4E8">  | otherwise = linearSearchRec xs val (n + 1)</span></span>
+<span class="line"><span style="color: #6A737D">-- | Recursive linear search.</span></span>
+<span class="line"><span style="color: #B392F0">linearSearchRec</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">::</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">forall</span><span style="color: #E1E4E8"> a. </span><span style="color: #B392F0">Eq</span><span style="color: #E1E4E8"> a </span><span style="color: #F97583">=></span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">List</span><span style="color: #E1E4E8"> a </span><span style="color: #F97583">-></span><span style="color: #E1E4E8"> a </span><span style="color: #F97583">-></span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">Int</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">-></span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">Int</span></span>
+<span class="line"><span style="color: #E1E4E8">linearSearchRec </span><span style="color: #85E89D">Nil</span><span style="color: #E1E4E8"> _ _ </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">-</span><span style="color: #79B8FF">1</span></span>
+<span class="line"><span style="color: #E1E4E8">linearSearchRec (</span><span style="color: #85E89D">Cons</span><span style="color: #E1E4E8"> x xs) val n </span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">|</span><span style="color: #E1E4E8"> x </span><span style="color: #F97583">==</span><span style="color: #E1E4E8"> val  </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> n</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">|</span><span style="color: #E1E4E8"> otherwise </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> linearSearchRec xs val (n </span><span style="color: #F97583">+</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">1</span><span style="color: #E1E4E8">)</span></span>
 <span class="line"></span>
-<span class="line"><span style="color: #E1E4E8">-- | linearSearch function uses linearSearchRec with initial index as 0.</span></span>
-<span class="line"><span style="color: #E1E4E8">linearSearch :: forall a. Eq a => List a -> a ->  Int</span></span>
-<span class="line"><span style="color: #E1E4E8">linearSearch xs val = linearSearchRec xs val 0</span></span>
+<span class="line"><span style="color: #6A737D">-- | linearSearch function uses linearSearchRec with initial index as 0.</span></span>
+<span class="line"><span style="color: #B392F0">linearSearch</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">::</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">forall</span><span style="color: #E1E4E8"> a. </span><span style="color: #B392F0">Eq</span><span style="color: #E1E4E8"> a </span><span style="color: #F97583">=></span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">List</span><span style="color: #E1E4E8"> a </span><span style="color: #F97583">-></span><span style="color: #E1E4E8"> a </span><span style="color: #F97583">-></span><span style="color: #E1E4E8">  </span><span style="color: #B392F0">Int</span></span>
+<span class="line"><span style="color: #E1E4E8">linearSearch xs val </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> linearSearchRec xs val </span><span style="color: #79B8FF">0</span></span>
 <span class="line"></span></code></pre>
-<h2 id="output"><strong>Output :</strong></h2>
-<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #e1e4e8">2</span></span></code></pre>
 				</div>
 				
 			</div>

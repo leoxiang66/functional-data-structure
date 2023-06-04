@@ -14,7 +14,7 @@ QuickSort works by selecting a 'pivot' element from the array and partitioning t
 
 Here's a simplified implementation of QuickSort in Purescript:
 
-```
+```purescript
 quicksort :: forall a. Ord a => List a -> List a
 quicksort Nil = Nil
 quicksort (x:xs) = 

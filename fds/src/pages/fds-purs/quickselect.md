@@ -16,7 +16,7 @@ However, unlike QuickSort, which recursively processes both sub-lists, QuickSele
 
 Here is a simplified implementation of QuickSelect in Purescript:
 
-```
+```purescript
 module QuickSelect where
 
 import Prelude

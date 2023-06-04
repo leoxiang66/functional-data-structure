@@ -37,7 +37,7 @@ Linear search is the simplest search algorithm and often called sequential searc
 
 ## **Code :**
 
-```java
+```purescript
 module Algos.Search
   ( linearSearch
   )
@@ -60,8 +60,3 @@ linearSearch xs val = linearSearchRec xs val 0
 
 ```
 
-## **Output :**
-
-```
-2
-```
