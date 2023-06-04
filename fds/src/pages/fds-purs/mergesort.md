@@ -61,7 +61,6 @@ merge (x:xs) (y:ys)
   | otherwise = y : merge (x:xs) ys
 ```
 
-Note: In this example, we are using PureScript's built-in `sort` function for merging the arrays. A real-world implementation would require a more complex merging function that merges two arrays in a way that maintains their order.
 
 ## Advantages of Merge Sort
 
