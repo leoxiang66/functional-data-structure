@@ -10,3 +10,4 @@
 output/
 go.mod
 purescript-native/ffi_loader.go
+fds/
