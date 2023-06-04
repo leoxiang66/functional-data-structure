@@ -258,6 +258,23 @@ a {
   margin-bottom: 10px;
 }
 
+.fa-font-awesome:before {
+    content: " "
+}
+
+.fa-font-awesome-alt:before {
+    content: " "
+}
+
+.fa-font-awesome-flag:before {
+    content: " "
+}
+
+.fa-font-awesome-logo-full:before {
+    content: " "
+}
+
+
 .lesson h2::after {
   content: "";
   display: block;
@@ -350,6 +367,8 @@ blockquote > *:last-child {
 .lesson-content img {
   max-width: 100%;
 }
+
+
 
 .main-card {
   max-width: 900px;
