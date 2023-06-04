@@ -1,13 +1,15 @@
 module Algos.Sort
   ( insort
+  , quickselect
   , sel_sort
   )
   where
 
 import Prelude
 
-import Data.List (List(..), (:))
+import Data.List (List(..), (:), filter, length)
 import Data.Tuple (Tuple(..))
+import Data.Maybe (Maybe(..))
 
 
 
@@ -37,3 +39,16 @@ insort :: forall a. Ord a => List a -> List a
 insort Nil = Nil
 insort (x:xs) = insert_ x (insort xs)
 
+
+-- Quick Select
+-- Find the k-smallest number in a given list, without actually sorting the list
+quickselect :: forall a. Ord a => List a -> Int -> Maybe a
+quickselect Nil _ = Nothing
+quickselect (x : xs) k =
+  let
+    xs1 = filter (_ < x) xs
+    xs2 = filter (_ >= x) xs
+  in
+    if k < length xs1 then quickselect xs1 k
+    else if k == length xs1 then Just x
+    else quickselect xs2 (k - length xs1 - 1)
