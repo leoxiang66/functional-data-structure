@@ -1,5 +1,6 @@
 module Algos.Sort
-  ( insort
+  ( bubbleSort
+  , insort
   , quickselect
   , quicksort
   , sel_sort
@@ -11,6 +12,7 @@ import Prelude
 import Data.List (List(..), filter, length, (!!), (:))
 import Data.Maybe (Maybe(..), fromMaybe)
 import Data.Tuple (Tuple(..))
+import Prim.RowList (Nil)
 
 
 
@@ -68,5 +70,13 @@ quicksort (x:xs) =
     in
          quicksort left <> middle <> quicksort right
       
-      
+-- Bubble Sort
+bb_1 :: forall a. Ord a => List a -> List a 
+bb_1 (x:y:ys)
+  | x <= y = x : (bb_1 (y:ys))
+  | otherwise = y : (bb_1 (x:ys))
+bb_1 x = x
 
+bubbleSort :: forall a.Ord a => List a -> List a
+bubbleSort Nil = Nil
+bubbleSort (x:xs) = bb_1 (x:(bubbleSort xs))

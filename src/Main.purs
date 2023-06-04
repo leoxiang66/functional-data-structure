@@ -4,7 +4,7 @@ import Data.List
 import Prelude
 
 import Algos.Search (binarySearch, linearSearch)
-import Algos.Sort (insort, quickselect, quicksort, sel_sort)
+import Algos.Sort (bubbleSort, insort, quickselect, quicksort, sel_sort)
 import Data.Array (toUnfoldable)
 import Effect (Effect)
 import Effect.Console (logShow)
@@ -45,3 +45,4 @@ main = do
   logShow (binarySearch sorted 3)
   logShow (binarySearch sorted 5)
   logShow (binarySearch sorted 7)
+  logShow (bubbleSort arr)
