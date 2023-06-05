@@ -35,7 +35,7 @@ quickselect (x : xs) k =
     else quickselect xs2 (k - length xs1 - 1)
 ```
 
-This version of QuickSelect uses the "list comprehension" feature in Python to create the left, middle, and right lists. It assumes a function `selectPivot` is available to choose a pivot from the list.
+
 
 ## Complexity Analysis
 

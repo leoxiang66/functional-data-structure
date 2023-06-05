@@ -27,7 +27,7 @@ quicksort (x:xs) =
          quicksort left <> middle <> quicksort right
 ```
 
-This version of QuickSort uses the "list comprehension" feature in Python to create the left, middle, and right arrays. It uses the middle element as the pivot.
+
 
 ## Complexity Analysis
 

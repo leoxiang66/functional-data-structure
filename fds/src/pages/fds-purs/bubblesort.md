@@ -48,7 +48,7 @@ bubbleSort Nil = Nil
 bubbleSort (x:xs) = bb_1 (x:(bubbleSort xs))
 ```
 
-Note: In this simplified example, we use PureScript's built-in `sort` function from the `Data.Array` module. To implement bubble sort from scratch, you would need to implement the logic for iterating over the array, comparing adjacent elements, and swapping elements as necessary.
+
 
 ## Advantages of Bubble Sort
 

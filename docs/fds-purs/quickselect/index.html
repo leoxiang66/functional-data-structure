@@ -4,7 +4,7 @@
 		<!-- Global Metadata --><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-<meta name="generator" content="Astro v2.5.6">
+<meta name="generator" content="Astro v2.5.7">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
 <!-- Canonical URL -->
@@ -63,7 +63,6 @@
 <span class="line"><span style="color: #E1E4E8">    </span><span style="color: #F97583">if</span><span style="color: #E1E4E8"> k </span><span style="color: #F97583">&#x3C;</span><span style="color: #E1E4E8"> length xs1 </span><span style="color: #F97583">then</span><span style="color: #E1E4E8"> quickselect xs1 k</span></span>
 <span class="line"><span style="color: #E1E4E8">    </span><span style="color: #F97583">else</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">if</span><span style="color: #E1E4E8"> k </span><span style="color: #F97583">==</span><span style="color: #E1E4E8"> length xs1 </span><span style="color: #F97583">then</span><span style="color: #E1E4E8"> </span><span style="color: #85E89D">Just</span><span style="color: #E1E4E8"> x</span></span>
 <span class="line"><span style="color: #E1E4E8">    </span><span style="color: #F97583">else</span><span style="color: #E1E4E8"> quickselect xs2 (k </span><span style="color: #F97583">-</span><span style="color: #E1E4E8"> length xs1 </span><span style="color: #F97583">-</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">1</span><span style="color: #E1E4E8">)</span></span></code></pre>
-<p>This version of QuickSelect uses the “list comprehension” feature in Python to create the left, middle, and right lists. It assumes a function <code>selectPivot</code> is available to choose a pivot from the list.</p>
 <h2 id="complexity-analysis">Complexity Analysis</h2>
 <p>The average time complexity of QuickSelect is O(n), but its worst-case time complexity is O(n^2). The worst-case scenario occurs when the pivot chosen is the smallest or largest element in the list, leading to very unbalanced partitions.</p>
 <p>Many methods exist to select a “good” pivot, such as choosing the median of the list, choosing a random element, or using the “median of medians” algorithm. A good pivot is one that gives roughly equal-sized partitions, which is what gives QuickSelect its average-case time complexity of O(n).</p>

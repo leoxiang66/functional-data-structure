@@ -4,7 +4,7 @@
 		<!-- Global Metadata --><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-<meta name="generator" content="Astro v2.5.6">
+<meta name="generator" content="Astro v2.5.7">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
 <!-- Canonical URL -->
@@ -56,7 +56,6 @@
 <span class="line"><span style="color: #E1E4E8">      right </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> filter (_ </span><span style="color: #F97583">></span><span style="color: #E1E4E8"> pivot) (x</span><span style="color: #F97583">:</span><span style="color: #E1E4E8">xs)</span></span>
 <span class="line"><span style="color: #E1E4E8">    </span><span style="color: #F97583">in</span></span>
 <span class="line"><span style="color: #E1E4E8">         quicksort left </span><span style="color: #F97583">&#x3C;></span><span style="color: #E1E4E8"> middle </span><span style="color: #F97583">&#x3C;></span><span style="color: #E1E4E8"> quicksort right</span></span></code></pre>
-<p>This version of QuickSort uses the “list comprehension” feature in Python to create the left, middle, and right arrays. It uses the middle element as the pivot.</p>
 <h2 id="complexity-analysis">Complexity Analysis</h2>
 <p>The best case and average case time complexity of QuickSort is O(n log n), but its worst-case time complexity is O(n^2). The worst-case scenario occurs when the smallest or largest element is always chosen as the pivot, leading to highly unbalanced partitions.</p>
 <p>However, this worst-case scenario isn’t common if the pivot is chosen wisely. Many strategies exist to choose a “good” pivot, such as randomly selecting an element, choosing the median, or using the “median of medians” algorithm. A good pivot is one that gives roughly balanced partitions, which is what gives QuickSort its average-case time complexity of O(n log n).</p>
