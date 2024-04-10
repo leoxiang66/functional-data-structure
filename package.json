@@ -4,9 +4,9 @@
   "description": "A Rescript package for functional data structure.",
   "author": "Tao Xiang",
   "scripts": {
-    "res:build": "rescript",
-    "res:clean": "rescript clean",
-    "res:dev": "rescript build -w"
+    "build": "rescript",
+    "clean": "rescript clean",
+    "dev": "rescript build -w"
   },
   "keywords": [
     "rescript"
