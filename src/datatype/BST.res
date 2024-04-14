@@ -115,10 +115,4 @@ let rec printTree = (t: bst<'a>) => {
 }
 
 
-// 使用示例
-let mybst = createEmptyBST()
-let mybst = insert(mybst, 10)
-let mybst = insert(mybst, 5)
-let mybst = insert(mybst, 15)
-let mybst = remove(mybst, 15)
-printTree(mybst)
+

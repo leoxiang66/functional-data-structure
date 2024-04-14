@@ -51,7 +51,7 @@ module Tree = {
     let rec set_mtree = (tree: mtree<'a>): Set.t<'a> => {
     switch tree {
     | Leaf => Set.empty()
-    | Node (l,m,a,r) => 
+    | Node (l,_,a,r) => 
         {
             let subset1 = Set.insert(~item = a, ~set = set_mtree(l));
             let subset2 = set_mtree(r);

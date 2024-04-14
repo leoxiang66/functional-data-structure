@@ -20,7 +20,7 @@ module Utils = {
         }
     
 
-    let rec all = (pred: ('a)=>bool, arr:array<'a>) => {
+    let all = (pred: ('a)=>bool, arr:array<'a>) => {
         let len = Belt.Array.length(arr)
         let rec loop = i =>
             i >= len || (pred(Belt.Array.getUnsafe(arr, i)) && loop(i + 1))
