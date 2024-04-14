@@ -87,16 +87,16 @@ let rec remove = (t: bst<'a>, value: 'a): bst<'a> => {
 
 
 
-let rec find = (t: bst<'a>, value: 'a) => {
+let rec contains = (t: bst<'a>, value: 'a) => {
   switch t {
   | Empty => false
   | Node(x, left, right) =>
     if value === x {
       true
     } else if value < x {
-      find(left, value)
+      contains(left, value)
     } else {
-      find(right, value)
+      contains(right, value)
     }
   }
 }
