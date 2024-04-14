@@ -4,5 +4,5 @@
 .bsb.lock
 .merlin
 **.tgz**
-**.js
+**.res
 .gitattributes
