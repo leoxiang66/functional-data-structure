@@ -1,4 +1,4 @@
-type max_bst<'a> =
+type rec max_bst<'a> =
   | Empty
   | Node('a, 'a, max_bst<'a>, max_bst<'a>) // (node_value, subtree_max, left, right)
 
@@ -21,14 +21,12 @@ let rec insert = (tree: max_bst<'a>, value: 'a) => {
   }
 }
 
-
 let getMax = (tree: max_bst<'a>) => {
   switch tree {
   | Empty => failwith("Empty tree has no maximum")
   | Node(_, subtreeMax, _, _) => subtreeMax
   }
 }
-
 
 let rec contains = (t: max_bst<'a>, value: 'a) => {
   switch t {
@@ -44,7 +42,6 @@ let rec contains = (t: max_bst<'a>, value: 'a) => {
   }
 }
 
-
 let rec printTree = (t: max_bst<'a>) => {
   switch t {
   | Empty => ()
@@ -56,42 +53,25 @@ let rec printTree = (t: max_bst<'a>) => {
   }
 }
 
-
 let rec remove = (t: max_bst<'a>, value: 'a) => {
   switch t {
   | Empty => Empty
   | Node(x, m, l, r) =>
     if value === x {
-      match (l, r) {
+      switch (l, r) {
       | (Empty, _) => r
       | (_, Empty) => l
-      | _ => let (newRight, maxRight) = removeMax(r)
-             Node(maxRight, getMax(newRight), l, newRight)
+      | (Node(_, m1, _, _), Node(_, m2, _, _)) => Node(m1, m2, remove(l, m1), r)
       }
     } else if value < x {
       Node(x, m, remove(l, value), r)
     } else {
       let newRight = remove(r, value)
-      let newMax = match newRight {
+      let newMax = switch newRight {
       | Empty => x
-      | Node(_, maxRight, _, _) => max(maxRight, x)
+      | Node(_, maxRight, _, _) => maxRight
       }
       Node(x, newMax, l, newRight)
-    }
-  }
-}
-
-let rec removeMax = (t: max_bst<'a>): (max_bst<'a>, 'a) => {
-  switch t {
-  | Empty => failwith("Should never call removeMax on an empty tree")
-  | Node(value, _, _, Empty) => (Empty, value) // 最大节点被移除
-  | Node(value, maxVal, left, right) => {
-      let (newRight, maxRightValue) = removeMax(right)
-      let newMax = match newRight {
-      | Empty => getMin(left) // 新的右子树为空，取左子树的最大值
-      | Node(_, newMax, _, _) => newMax
-      }
-      (Node(value, newMax, left, newRight), maxRightValue)
     }
   }
 }
